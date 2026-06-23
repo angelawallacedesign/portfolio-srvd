@@ -1,0 +1,62 @@
+/* =========================
+   TOP/BOTTOM CONTAINER FADES
+========================= */
+
+.scroll-container {
+  overflow-y: auto;
+
+  --fade-size: 48px;
+}
+
+/* top only */
+.scroll-container.fade-top {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--fade-size),
+    black 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--fade-size),
+    black 100%
+  );
+}
+
+/* bottom only */
+.scroll-container.fade-bottom {
+  mask-image: linear-gradient(
+    to bottom,
+    black 0,
+    black calc(100% - var(--fade-size)),
+    transparent
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0,
+    black calc(100% - var(--fade-size)),
+    transparent
+  );
+}
+
+/* top + bottom */
+.scroll-container.fade-both {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--fade-size),
+    black calc(100% - var(--fade-size)),
+    transparent
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--fade-size),
+    black calc(100% - var(--fade-size)),
+    transparent
+  );
+}

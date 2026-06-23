@@ -59,6 +59,8 @@
    LAYOUT
 ========================= */
   --frame-pad: 20px;
+  /*--main-pad: clamp(32px, 4vw, 64px);*/
+  --main-pad: clamp(32px, 4vw, 64px);
   --container-max: 1100px;
   --gap-1: 12px;
   --gap-2: 20px;

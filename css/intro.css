@@ -87,11 +87,11 @@ body {
 /* Vertical Containers */
 
 .intro-stage {
-  min-height: 100vh;
+  min-height: calc(100svh - (var(--frame-pad) * 2));
+  padding: var(--main-pad);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(32px, 4vw, 64px);
 }
 
 .intro-top {

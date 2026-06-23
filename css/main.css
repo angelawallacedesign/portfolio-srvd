@@ -97,7 +97,6 @@ img, svg { max-width: 100%; height: auto; display: block; }
   min-height: 100%;
   display: grid;
   place-items: center;
-  padding: clamp(2rem, 4vw, 6rem);
 }
 
 .visually-hidden {
