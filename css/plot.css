@@ -340,7 +340,7 @@ svg.plot-d6a7b5 g[aria-label="y-axis tick label"] {
     width: 90vw;
   }
   .plot-bottom { 
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     align-items: center;
   }
   .plot-bottom h2 {

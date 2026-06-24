@@ -66,10 +66,12 @@ h1 {
 /* Heading Pattern Page Override */
 /* ========================= */
 
+/*
   .project-card .section-heading, 
   .layer-3 .section-heading {
     flex-direction: row;
   }
+    */
 
   .project-card {
     --heading-main-size: 1.75rem;
@@ -235,10 +237,10 @@ a.is-active {
 .global-header .header-inner {
   min-height: var(--header-min);
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   flex-direction:row;
-  padding: 30px;
+  padding: 40px;
   gap: 10px;
 }
 

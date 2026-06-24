@@ -163,7 +163,8 @@ body {
   }
 
   .stack {
-    font-size: 100px;
+    /*font-size: 100px;*/
+    font-size: 90px;
   }
 
   .stack-group {

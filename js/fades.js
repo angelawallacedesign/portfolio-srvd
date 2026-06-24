@@ -1,39 +1,52 @@
-const container = document.querySelector('.scroll-container');
+const projectList = document.getElementById("project-list");
+const fadeClasses = ["fade-top", "fade-bottom", "fade-both"];
+const scrollTolerance = 2;
 
-function updateFades() {
-  const scrollTop = container.scrollTop;
-  const maxScroll =
-    container.scrollHeight - container.clientHeight;
-
-  if (maxScroll <= 0) {
-    container.className = 'scroll-container';
-    return;
+if (projectList) {
+  function clearFades() {
+    projectList.classList.remove(...fadeClasses);
   }
 
-  if (scrollTop <= 1) {
-    container.classList.remove(
-      'fade-top',
-      'fade-both'
-    );
-    container.classList.add('fade-bottom');
+  function updateProjectListFades() {
+    const maxScroll = projectList.scrollHeight - projectList.clientHeight;
 
-  } else if (scrollTop >= maxScroll - 1) {
-    container.classList.remove(
-      'fade-bottom',
-      'fade-both'
-    );
-    container.classList.add('fade-top');
+    if (maxScroll <= scrollTolerance) {
+      clearFades();
+      return;
+    }
 
-  } else {
-    container.classList.remove(
-      'fade-top',
-      'fade-bottom'
-    );
-    container.classList.add('fade-both');
+    const isAtTop = projectList.scrollTop <= scrollTolerance;
+    const isAtBottom =
+      projectList.scrollTop >= maxScroll - scrollTolerance;
+
+    if (isAtTop) {
+      projectList.classList.remove("fade-top", "fade-both");
+      projectList.classList.add("fade-bottom");
+    } else if (isAtBottom) {
+      projectList.classList.remove("fade-bottom", "fade-both");
+      projectList.classList.add("fade-top");
+    } else {
+      projectList.classList.remove("fade-top", "fade-bottom");
+      projectList.classList.add("fade-both");
+    }
   }
+
+  projectList.addEventListener("scroll", updateProjectListFades);
+  window.addEventListener("resize", updateProjectListFades);
+  window.addEventListener("load", updateProjectListFades);
+
+  if ("ResizeObserver" in window) {
+    const resizeObserver = new ResizeObserver(updateProjectListFades);
+    resizeObserver.observe(projectList);
+  }
+
+  if ("MutationObserver" in window) {
+    const mutationObserver = new MutationObserver(updateProjectListFades);
+    mutationObserver.observe(projectList, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  updateProjectListFades();
 }
-
-container.addEventListener('scroll', updateFades);
-window.addEventListener('resize', updateFades);
-
-updateFades();
