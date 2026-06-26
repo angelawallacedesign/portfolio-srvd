@@ -39,21 +39,25 @@
    COLOR
 ========================= */
 
-  /* Frame + surfaces */
-  --color-frame: #000;
-  --color-case-study-frame: #313131;
-  --color-surface: #fff;
-  --color-text: #111;
-
   /* Brand */
   --color-primary: #000;  /* Core brand / text */
   --color-secondary: #C3C3C3;  /* Neutral surfaces, dividers */
   --color-accent:  #FA4D7E;  /* Emphasis / highlights */
-  --color-divider: #D9D9D9;
 
   /* Interaction */
   --color-focus:  #D7154D;  /* Focus rings, active states */
   --color-control: #23CDCD;  /* Controls, affordances */
+
+  /* Frame + surfaces */
+  --color-frame: #000;
+  --color-case-study-frame: #313131;
+  --color-surface: #fff;
+  --color-divider: #D9D9D9;
+
+  /* Text */
+  --color-text: #111;
+  --color-text-contrast: #fff;
+  --color-text-muted: #C3C3C3;
 
 /* =========================
    LAYOUT
@@ -70,4 +74,25 @@
   --half-width: 50%;  
 
   --header-min: 64px;
+
+/* =========================
+   DEFAULT COLOR THEME
+========================= */
+
+/* AWD (default) */
+  --primary: var(--color-primary);
+  --accent: var(--color-accent);
+  --accent-highlight: var(--color-focus);
+
+  --bg: var(--color-surface);
+  --surface: var(--color-surface);
+  --border: var(--color-divider);
+
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+
+  --icon: var(--color-icon);
+
 }
+
+/* Adding color themes: Look at /Development/apply-tracker/src/index.css for the same shape (working examples) of multiple color themes */

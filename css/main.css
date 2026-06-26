@@ -49,7 +49,7 @@ body.long-page {
 
 body {
   margin: 0;
-  background: transparent;      /* black frame */
+  background: transparent;      
   padding: var(--frame-pad);     /* fixed 20px frame */
   font-family: var(--font-sans);
   color: var(--text);
@@ -114,11 +114,11 @@ img, svg { max-width: 100%; height: auto; display: block; }
 
 .layout-section-header {
   display: flex;
-  align-items: center;
+  align-self: flex-end;
   justify-content: space-between;
   gap: var(--space-3);
   width: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 
@@ -182,10 +182,6 @@ img, svg { max-width: 100%; height: auto; display: block; }
   padding: 0;
   margin: 0;
 }
-
-
-
-
 
 /* =========================
    HEADING PATTERN
@@ -307,6 +303,9 @@ img, svg { max-width: 100%; height: auto; display: block; }
   overflow: scroll;
 }
 
+.section[data-section="projects"] .section-content {
+  align-self: flex-start;
+}
 
 /* move to components.css - AW 3/8/26 */
 article.project-card {
@@ -318,6 +317,10 @@ article.project-card {
   border-bottom: 1px solid #F2F2F2;
   box-sizing: border-box;
   padding: 20px 0;
+}
+
+.project-card:first-child {
+  padding: 0 0 20px;
 }
 
 .project-card:last-child {

@@ -240,7 +240,7 @@ a.is-active {
   align-items: center;
   justify-content: space-between;
   flex-direction:row;
-  padding: 40px;
+  padding: 30px;
   gap: 10px;
 }
 
