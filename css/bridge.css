@@ -121,14 +121,14 @@ a.hero-link:hover {
   color: rgba(0,0,0,.12);
 
   white-space: nowrap;
+  cursor: pointer;
 
   transition:
     color 600ms ease,
     opacity 600ms ease;
 }
 
-.phrase-field span.is-active,
-.phrase-field span:hover {
+.phrase-field span.is-active {
   color: rgba(0,0,0,1);
 }
 
