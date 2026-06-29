@@ -202,7 +202,19 @@
                 <p>I started making things early—drawing, writing, composing—before I had language for design. That instinct evolved into formal training and a career spanning digital and product environments.</p>
                 <p>Over time, my focus has sharpened around interface design—typography, composition, and scalable systems that support real-world constraints. I value clarity, restraint, and structure: design that performs as well as it looks.</p>
                 <p>I’m interested in teams that care about craft, collaboration, and building products with long-term impact.</p>
-                <p>For inquiries: <a class="link-btn" href="mailto:angie@angelawallace.net">hello@angelawallace.net</a></p>
+                <p>
+                  <button 
+                    class="primary-btn-small"
+                    type="button"
+                    onclick="
+                      navigator.clipboard.writeText('hello@angelawallace.design');
+                      this.textContent='Copied!';
+                      setTimeout(() => this.textContent='Copy Email', 2000);
+                  ">
+                    Copy Email
+                  </button>
+                  <a class="link-btn" href="https://www.linkedin.com/in/angelawallacedesign"> LinkedIn Profile ↗</a> 
+                </p>
               </article>
             </div>
           </div>
