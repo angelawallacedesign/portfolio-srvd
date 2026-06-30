@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="https://use.typekit.net/dej8pod.css">
     <link rel="stylesheet" type="text/css" href="https://angieswebdesign.github.io/shared/css/global-tokens.css" />
     <link rel="stylesheet" type="text/css" href="css/tokens.css" />
-    <!--<link rel="stylesheet" type="text/css" href="../shared/css/global-components.css" />-->
+    <link rel="stylesheet" href="https://angieswebdesign.github.io/shared/css/global-components.css" />
     <!--<link rel="stylesheet" type="text/css" href="css/components.css" />-->
     <link rel="stylesheet" type="text/css" href="css/bridge.css" />
 </head>
@@ -126,8 +126,12 @@
 
         </div>
 
+        <div class="scroll-cue" data-scroll-cue data-scroll-cue-target="gap" aria-hidden="true">
+            <a class="hero-link" href="#gap" aria-label="Scroll down the page" tabindex="-1">↓</a>
+        </div>
+
         <div id="gap" class="hero-message">
-            <a class="hero-link" href="work.html">I BRIDGE THE GAP.</a>
+            <a class="hero-link" href="work.html">I BRIDGE THE GAP →</a>
         </div>
 
     </section>
@@ -138,25 +142,22 @@
         </p>
     </footer>
 
-
-
-
-    
-
-
+    <script src="./js/scroll-cue.js"></script>
     <script type="module" src="./js/bridge.js"></script>
 
     <!--<script type="module" src="/./js/main.js"></script> enable when moving all inline and external js to one file-->
     <script>
-        const heroLink = document.querySelector(".hero-link");
+        const heroLink = document.querySelector(".hero-message .hero-link");
 
-        heroLink.addEventListener("mouseenter", () => {
-            heroLink.innerHTML = "VIEW WORK ↗";
-        });
+        if (heroLink) {
+            heroLink.addEventListener("mouseenter", () => {
+                heroLink.innerHTML = "VIEW WORK →";
+            });
 
-        heroLink.addEventListener("mouseleave", () => {
-            heroLink.innerHTML = "I BRIDGE THE GAP.";
-        });
+            heroLink.addEventListener("mouseleave", () => {
+                heroLink.innerHTML = "I BRIDGE THE GAP →";
+            });
+        }
 
     </script>
 </body>
