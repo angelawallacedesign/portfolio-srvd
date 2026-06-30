@@ -1,3 +1,4 @@
+/* Adding color themes: Look at https://angieswebdesign.github.io/shared/css/global-tokens.css (working examples) of multiple color themes */
 
 :root {
   
@@ -11,16 +12,15 @@
   --font-serif-text: "DM Serif Text", serif; /* Scope: font-weight: regular(400); font-style: normal, italic; (Added by AW 030226 @2:40pm) */
 
   /* ===== TYPE SCALE ===== */
-  --type-hero: 93px;
-  --type-hero-accent: 80px;
 
-  --type-display: 64px;
+  --type-xl: 64px;
+  --type-lg: 22px;
+  --type-md: 16px;
+  --type-sm: 14px;
+
   --type-h1: 48px;
   --type-h2: 36px;
   --type-h3: 28px;
-  --type-body-lg: 22px;
-  --type-body: 16px;
-  --type-small: 14px;
 
   /* line heights */
   --lh-tight: 0.85;
@@ -34,30 +34,17 @@
     /* Breakpoint */
   --bp-stack: 480px;
 
-
 /* =========================
-   COLOR
+   STAGE DEFENITIONS
 ========================= */
 
-  /* Brand */
-  --color-primary: #000;  /* Core brand / text */
-  --color-secondary: #C3C3C3;  /* Neutral surfaces, dividers */
-  --color-accent:  #FA4D7E;  /* Emphasis / highlights */
-
-  /* Interaction */
-  --color-focus:  #D7154D;  /* Focus rings, active states */
-  --color-control: #23CDCD;  /* Controls, affordances */
-
-  /* Frame + surfaces */
-  --color-frame: #000;
-  --color-case-study-frame: #313131;
-  --color-surface: #fff;
-  --color-divider: #D9D9D9;
-
-  /* Text */
-  --color-text: #111;
-  --color-text-contrast: #fff;
-  --color-text-muted: #C3C3C3;
+  --header-height: 125px;        /* AWD sticky header height */
+  --frame-thickness: calc(var(--frame-pad) * 2); 
+  --stage-height: calc(
+    100svh
+    - var(--header-height)
+    - var(--frame-thickness)
+  );
 
 /* =========================
    LAYOUT
@@ -71,28 +58,40 @@
   --gap-3: 30px;
   --gap-4: 50px;
   --gap-5: 200px;
-  --half-width: 50%;  
 
   --header-min: 64px;
 
 /* =========================
-   DEFAULT COLOR THEME
+   OVERLAY
 ========================= */
+  /* Overlay */
+  --overlay-bg: rgba(42, 41, 41, 0.8);
+  --overlay-triangle-bg: rgba(0, 0, 0, 0.35);
+  --overlay-pad: 20px;
+  --overlay-col2-min: 450px;
 
-/* AWD (default) */
-  --primary: var(--color-primary);
-  --accent: var(--color-accent);
-  --accent-highlight: var(--color-focus);
+  /* Overlay animation */
+  --overlay-triangle-enter-duration: 140ms;
+  --overlay-triangle-enter-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --overlay-panel-enter-delay: 140ms;
+  --overlay-panel-enter-duration: 180ms;
 
-  --bg: var(--color-surface);
-  --surface: var(--color-surface);
-  --border: var(--color-divider);
-
-  --text: var(--color-text);
-  --text-muted: var(--color-text-muted);
-
-  --icon: var(--color-icon);
 
 }
 
-/* Adding color themes: Look at /Development/apply-tracker/src/index.css for the same shape (working examples) of multiple color themes */
+
+
+/* =========================
+   RESPONSIVE TOKENS
+========================= */
+
+@media (max-width: 768px) {
+  /* Mobile Behavior for System Headings (Proportional scale) */
+  :root {
+    --frame-pad: 12px;
+    --type-xl: 42px;
+    --type-h1: 36px;
+    --type-h2: 28px;
+    --type-lg: 20px;
+  }
+}

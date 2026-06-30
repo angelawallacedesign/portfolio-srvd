@@ -29,6 +29,8 @@
         <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.typekit.net/dej8pod.css">
   <!-- Global Tokens -->
+        <link rel="stylesheet" href="https://angieswebdesign.github.io/shared/css/global-tokens.css" />
+  <!-- Global Tokens -->
         <link rel="stylesheet" href="css/tokens.css" />
   <!-- Conponents -->
         <link rel="stylesheet" href="css/components.css" />
@@ -88,18 +90,18 @@
                   </ul>
                 </div>
                 <!-- end Toggle Switch -->
-              </header>
+            </header>
             <div class="section-content">
               
               <div class="projects-wrapper">
 
                 <!--Toggle container 1 of 2: Project List -->
                 <div class="toggle-wrapper" data-visible="true">
-                  <div id="project-list"></div> 
+                  <div id="project-list" class="layout-section-body"></div> 
                 </div>
                 <!-- Toggle container 2 of 2: Plot Chart -->
                 <div class="toggle-wrapper" data-visible="false">
-                  <div>
+                  <div class="layout-section-body">
                     <div class="chart-container section-inner">
                         <div class="y-axis-labels">
                             <span>5</span>
@@ -200,7 +202,19 @@
                 <p>I started making things early—drawing, writing, composing—before I had language for design. That instinct evolved into formal training and a career spanning digital and product environments.</p>
                 <p>Over time, my focus has sharpened around interface design—typography, composition, and scalable systems that support real-world constraints. I value clarity, restraint, and structure: design that performs as well as it looks.</p>
                 <p>I’m interested in teams that care about craft, collaboration, and building products with long-term impact.</p>
-                <p>For inquiries: <a class="link-btn" href="mailto:angie@angelawallace.net">hello@angelawallace.net</a></p>
+                <p>
+                  <button 
+                    class="primary-btn-small"
+                    type="button"
+                    onclick="
+                      navigator.clipboard.writeText('hello@angelawallace.design');
+                      this.textContent='Copied!';
+                      setTimeout(() => this.textContent='Copy Email', 2000);
+                  ">
+                    Copy Email
+                  </button>
+                  <a class="link-btn" href="https://www.linkedin.com/in/angelawallacedesign"> LinkedIn Profile ↗</a> 
+                </p>
               </article>
             </div>
           </div>
