@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="https://use.typekit.net/dej8pod.css">
     <link rel="stylesheet" type="text/css" href="https://angieswebdesign.github.io/shared/css/global-tokens.css" />
     <link rel="stylesheet" type="text/css" href="css/tokens.css" />
-    <!--<link rel="stylesheet" type="text/css" href="../shared/css/global-components.css" />-->
+    <link rel="stylesheet" href="https://angieswebdesign.github.io/shared/css/global-components.css" />
     <!--<link rel="stylesheet" type="text/css" href="css/components.css" />-->
     <link rel="stylesheet" type="text/css" href="css/bridge.css" />
 </head>
@@ -65,7 +65,7 @@
             <span data-group="ui">COMPONENTS</span>
             <span data-group="ui">PATTERNS</span>
             <span data-group="ui">CONSISTENCY</span>
-            <span data-group="ui">LAYOUT SYSTEMS</span>
+            <span data-group="ui">LAYOUT</span>
             <span data-group="ui">MOTION</span>
             <span data-group="ui">MICROINTERACTIONS</span>
             <span data-group="ui">DENSITY</span>
@@ -126,38 +126,76 @@
 
         </div>
 
+        <div class="scroll-cue" data-scroll-cue data-scroll-cue-target="gap" aria-hidden="true">
+            <a class="hero-link" href="#gap" aria-label="Scroll down the page" tabindex="-1">
+                <span
+                    class="icon rotate-180"
+                    data-icon="arrow"
+                    aria-hidden="true">
+                </span>
+            </a>
+        </div>
+
         <div id="gap" class="hero-message">
-            <a class="hero-link" href="work.html">I BRIDGE THE GAP.</a>
+            <a class="hero-link" href="work.html">
+                <span class="hero-link__label">I BRIDGE THE GAP</span>
+                <span
+                    class="icon rotate-90"
+                    data-icon="arrow"
+                    aria-hidden="true">
+                </span>
+            </a>
         </div>
 
     </section>
 
     <footer>
         <p class="copyright">
-            &copy; 2026 AWD | <a href="https://www.linkedin.com/in/angelawallacedesign" target="_blank">LinkedIn ↗</a>
+            &copy; 2026 AWD | <a href="https://www.linkedin.com/in/angelawallacedesign" target="_blank">LinkedIn <span
+                    class="icon rotate-45"
+                    data-icon="arrow"
+                    aria-hidden="true">
+                </span></a>
         </p>
     </footer>
 
-
-
-
-    
-
-
-    <!--<script type="module" src="./js/bridge.js"></script>-->
+    <script src="./js/scroll-cue.js"></script>
+    <script type="module" src="./js/bridge.js"></script>
+    <script type="module" src="https://angieswebdesign.github.io/shared/js/base.js"></script>
 
     <!--<script type="module" src="/./js/main.js"></script> enable when moving all inline and external js to one file-->
     <script>
-        const heroLink = document.querySelector(".hero-link");
+    const heroLink = document.querySelector(".hero-message .hero-link");
+    const heroLabel = heroLink?.querySelector(".hero-link__label");
+    const mobile = window.matchMedia("(max-width: 767px)");
 
+    if (heroLink && heroLabel) {
+
+        function updateHeroLabel(e) {
+            heroLabel.textContent = e.matches
+                ? "VIEW WORK"
+                : "I BRIDGE THE GAP";
+        }
+
+        // Initial state
+        updateHeroLabel(mobile);
+
+        // Update on viewport resize/orientation change
+        mobile.addEventListener("change", updateHeroLabel);
+
+        // Desktop hover only
         heroLink.addEventListener("mouseenter", () => {
-            heroLink.innerHTML = "VIEW WORK ↗";
+            if (!mobile.matches) {
+                heroLabel.textContent = "VIEW WORK";
+            }
         });
 
         heroLink.addEventListener("mouseleave", () => {
-            heroLink.innerHTML = "I BRIDGE THE GAP.";
+            if (!mobile.matches) {
+                heroLabel.textContent = "I BRIDGE THE GAP";
+            }
         });
-
-    </script>
+    }
+</script>
 </body>
 </html>

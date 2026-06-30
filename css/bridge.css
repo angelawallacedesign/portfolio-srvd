@@ -69,22 +69,43 @@ a:hover {
 .hero-message {
     position: relative;
     z-index: 10;
+    align-self: end;
 }
 
-a.hero-link {
+/* ------------------------------------------------------------------
+   Hero display link
+
+   Display-only flex layout used to vertically center the hero label
+   with the enlarged shared arrow icon.
+------------------------------------------------------------------ */
+
+#gap .hero-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.15em;
+
     margin: 0;
-    display: block;
 
     font-family: var(--font-sans);
     font-weight: 900;
     font-size: clamp(4rem, 7vw, 8rem);
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: -0.02em;
 
     text-transform: uppercase;
-    text-align: right;
+    /*color: var(--color-text);*/
+}
 
-    color: var(--color-text);
+#gap .hero-link__label {
+    display: block;
+}
+
+#gap .hero-link .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
 }
 
 a.hero-link:hover {
@@ -93,6 +114,155 @@ a.hero-link:hover {
     transition:
     color 600ms ease,
     opacity 100ms ease;
+}
+
+/* -------------------------------- */
+/* AMBIENT SCROLL CUE */
+/* -------------------------------- */
+
+.scroll-cue {
+    --scroll-cue-height: 72px;
+    --scroll-cue-bottom: clamp(18px, 4svh, 42px);
+    --scroll-cue-arrow-size: clamp(3rem, 6vw, 5rem);
+    --scroll-cue-fade-duration: 600ms;
+    --scroll-cue-prompt-duration: 300ms;
+    --scroll-cue-prompt-iterations: 2;
+    --scroll-cue-travel: 8px;
+    --scroll-cue-easing: cubic-bezier(0.33, 0, 0.2, 1);
+
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: var(--scroll-cue-bottom);
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: var(--scroll-cue-height);
+    padding: 0 10px;
+    box-sizing: border-box;
+    background: transparent;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+    will-change: opacity;
+}
+
+.scroll-cue.is-ready {
+    transition: opacity var(--scroll-cue-fade-duration) var(--scroll-cue-easing);
+}
+
+.scroll-cue.is-visible {
+    opacity: 1;
+}
+
+.scroll-cue a.hero-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    margin: 0;
+
+    font-family: var(--font-sans);
+    font-weight: 900;
+
+    color: var(--color-accent);
+    opacity: 0.3;
+    cursor: pointer;
+    font-size: var(--scroll-cue-arrow-size);
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    pointer-events: none;
+    transform: translateY(0);
+    transition: opacity 200ms ease;
+    will-change: transform, opacity;
+}
+
+/* ------------------------------------------------------------------
+   Display-only hero .icon arrow styles
+
+   The shared arrow icon is designed for standard 24×24 UI usage.
+   At the enlarged hero sizes (~120px), the built-in viewBox padding
+   becomes visually prominent. This scoped override increases the
+   perceived icon size without affecting the shared icon system.
+------------------------------------------------------------------ */
+
+a.hero-link .icon {
+    width: 96px;
+    height: 96px;
+}
+
+#gap a.hero-link .icon {
+    width: 120px;
+    height: 120px;
+}
+
+/* Hero display exception:
+   Increase the perceived size of the shared arrow to reduce
+   visible viewBox padding at large display sizes only. */
+#gap .hero-link .icon svg {
+    width: 115%;
+    height: 115%;
+}
+
+a.hero-link svg {
+    stroke-width: 3px;
+}
+
+.scroll-cue.is-visible a.hero-link {
+    pointer-events: auto;
+}
+
+.scroll-cue a.hero-link:hover,
+.scroll-cue a.hero-link:active,
+.scroll-cue a.hero-link:focus-visible {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+.scroll-cue a.hero-link:focus-visible {
+    outline: 2px solid var(--color-control);
+    outline-offset: 4px;
+}
+
+.scroll-cue.is-prompting a.hero-link {
+    animation: scroll-cue-prompt
+        var(--scroll-cue-prompt-duration)
+        var(--scroll-cue-easing)
+        var(--scroll-cue-prompt-iterations);
+}
+
+@keyframes scroll-cue-prompt {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(var(--scroll-cue-travel));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-cue {
+        transition: none;
+    }
+
+    .scroll-cue.is-prompting a.hero-link {
+        animation: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .scroll-cue {
+        justify-content: flex-end;
+    }
 }
 
 /* -------------------------------- */
@@ -121,14 +291,14 @@ a.hero-link:hover {
   color: rgba(0,0,0,.12);
 
   white-space: nowrap;
+  cursor: pointer;
 
   transition:
     color 600ms ease,
     opacity 600ms ease;
 }
 
-.phrase-field span.is-active,
-.phrase-field span:hover {
+.phrase-field span.is-active {
   color: rgba(0,0,0,1);
 }
 
