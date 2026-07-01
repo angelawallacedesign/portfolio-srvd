@@ -98,27 +98,31 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .site {
   background: var(--theme-surface);
   padding: 0 var(--gap-4);
+  height: calc(100svh - var(--frame-thickness));
+  display: grid;
+  grid-template-rows: var(--header-height) minmax(0, 1fr);
+  overflow: hidden;
 }
 
 /* Centering container that stays fluid */
 .container {
   max-width: var(--container-max);
   margin-inline: auto;
-  padding: var(--gap-3);
+  padding: 0 var(--gap-3) var(--gap-3);
 }
 
 .section > .container {
-  min-height: 100%;
+  height: 100%;
+  min-height: 0;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 .visually-hidden {
   visibility: hidden;
   display: none;
 }
-
-
 
 
 
@@ -136,6 +140,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 
 .layout-section-body {
+  height: 100%;
+  min-height: 0;
   max-height: 500px;
 }
 
@@ -174,6 +180,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
    INTERACTION STATES
 ========================= */
 .content-rail {
+  height: 100%;
+  min-height: 0;
   will-change: transform;
 }
 
@@ -189,6 +197,9 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .page-main {
   display: grid;
   gap: 0;
+  height: var(--stage-height);
+  min-height: 0;
+  overflow: hidden;
 }
 
 
@@ -197,21 +208,39 @@ img, svg { max-width: 100%; height: auto; display: block; }
   height: var(--stage-height);
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
 /* =========================
    WORK SECTION
 ========================= */
 .projects-wrapper {
+  height: 100%;
+  min-height: 0;
   width: 100%;
 }
 
 #project-list {
+  height: 100%;
+  max-height: 100%;
   overflow: scroll;
 }
 
 .section[data-section="projects"] .section-content {
   align-self: flex-start;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+}
+
+.section[data-section="projects"] > .container {
+  grid-template-rows: auto minmax(0, 1fr);
+  place-items: stretch;
+}
+
+.section[data-section="projects"] .toggle-wrapper[data-visible="true"] {
+  height: 100%;
+  min-height: 0;
 }
 
 /* move to components.css - AW 3/8/26 */
@@ -445,15 +474,29 @@ article.project-card img {
   .section header p {
     display: none;
   }
+  .section .container {
+    padding: 0 var(--gap-2) var(--gap-2);
+  }
   .section .container .about {
     padding: 0;
   }
   .section .container .about img {
-    margin: 0 auto;
-    max-width: 70%;
+        margin: 0 auto;
+        width: 80%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center 25%;
   }
-  .section .container .about p:last-child {
-    display: none;
+  .section .container .about .primary-btn-small {
+    padding: 12px;
+    width: 100%;
+    font-size: 1.125rem;
+  }
+  .section .container .about .link-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
   }
   .section .container .about article {
     height: 275px;
@@ -485,4 +528,3 @@ article.project-card img {
 
 
   
-

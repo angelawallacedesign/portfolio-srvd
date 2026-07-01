@@ -1,0 +1,36 @@
+TODO: LAYOUT UTILS SHARED JS FILE CHATGPT SUGGESTION
+
+----------
+
+One suggestion
+
+I would eventually teach Codex another rule.
+
+Right now it added several helper functions directly into chart.js:
+
+getNumericStyle
+getChartBaseDimensions
+getChartDisplayDimensions
+
+They're good helpers.
+
+But once you accumulate a few of these, you'll probably want a small utility module.
+
+Something like
+
+js/utils/layout.js
+
+or
+
+shared/js/layout-utils.js
+
+Then future components can reuse
+
+container scaling
+border calculations
+available content measurements
+stage sizing
+
+without duplicating logic.
+
+I wouldn't stop Phase 2 for that—it's a refactor for later—but it's the kind of thing I'd put on the architectural backlog.

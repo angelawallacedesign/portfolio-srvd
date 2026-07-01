@@ -628,8 +628,8 @@ body.is-layer-3-open {
   Prevents section overlap when desktop frame model is active
   Do not remove without re-testing section stacking.
 ====================================================== */
-.section,
-  .snap-section {
+  .layer-3 .section,
+  .layer-3 .snap-section {
     height: auto !important;
     min-height: 100svh;
     overflow: visible;
