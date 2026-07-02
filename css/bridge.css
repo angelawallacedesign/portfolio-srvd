@@ -138,7 +138,7 @@ a.hero-link:hover {
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
 
     width: 100vw;
     height: var(--scroll-cue-height);

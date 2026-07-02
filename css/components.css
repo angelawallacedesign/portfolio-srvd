@@ -373,3 +373,13 @@ a.is-active {
   font-size: var(--type-lg);
   font-weight: 200;
 }
+
+/* General */
+span.caption {
+  display: block; 
+  font-weight: 400; 
+  font-style: italic;
+  font-size: 0.75rem;
+  color:var(--color-text);
+  margin: 0.125rem;
+}

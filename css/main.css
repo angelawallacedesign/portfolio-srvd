@@ -401,6 +401,9 @@ article.project-card img {
     align-items: center;
     width: auto;
   }
+  #project-list .section-heading {
+  flex-direction: row;
+}
 }
 
 @media (max-width: 768px) {
@@ -518,6 +521,9 @@ article.project-card img {
   .section .container #project-list {
     height: 500px;
   }
+ #project-list .section-heading {
+  flex-direction: column;
+}
   article.project-card {
     padding: 0 0 40px;
     gap: 1rem;

@@ -29,6 +29,11 @@
   --cs-img-thumb-w: 200px;
   --cs-img-thumb-h: 150px;
 
+
+  /* ========================= */
+  /* Effects */
+  /* ========================= */
+  --cs-box-shadow-values: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -275,7 +280,7 @@
 .list__title {
   font-style: italic;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 8px;
   text-transform: capitalize;
   border: 0;
@@ -575,6 +580,10 @@ body.is-layer-3-open {
 
  .layer-3-stage {
     width: 100%;
+  }
+
+  .layer-3 .pattern-intro .intro-thumb img {
+    height: auto;
   }
   
 .layer-3 {

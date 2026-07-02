@@ -1,28 +1,28 @@
 [
     {
-    "id": "florida-blue-data-sharing",
+    "id": "AMResorts-multi-brand-app",
     "heading": {
-      "title": "Privacy & Data Interface",
-      "main": "Privacy & Data",
-      "accent": "interface"
+      "title": "Multi-Brand App",
+      "main": "Multi-Brand",
+      "accent": "app"
     },
-    "year": 2023,
-    "users": 6000000,
-    "complexity": 4,
+    "year": 2017,
+    "users":350000,
+    "complexity": 5,
     "opacity": 0.8,
-    "hasCaseStudy": true,
-    "htmlInclude": "./includes/case-studies/3rd-party-data-sharing.html",
+    "hasCaseStudy": false,
+    "htmlInclude": "./includes/case-studies/layer3-test.html",
     "meta": {
-      "type": "Regulated Platform Design",
-      "client": "Florida Blue",
-      "role": "Visual Designer",
-      "disciplines": "PHI regulations, Legal compliance, Agile teams",
-      "notes": "Highly regulated data-sharing control interface for sensitive information",
-      "caption": "Above: Data-sharing table",
-      "imageUrl": "./assets/work/fb/data-sharing.png"
+      "type": "Enterprise Platform",
+      "client": "AMResorts",
+      "role": "UX Designer",
+      "disciplines": "UX/UI Design, Dev collaboration, Cross-platform implementation, Agile teams",
+      "notes": "Contributed interaction and visual design to a large-scale, multi-platform hospitality app spanning pre-arrival, on-property, and in-transit guest experiences across multiple luxury resort brands. Delivered high-fidelity UI systems adaptable across mobile, tablet, and on-property contexts while collaborating closely with product and development teams. Supported system consistency, scalability, and brand differentiation across a complex ecosystem of travel touchpoints.",
+      "caption": "Above: AMResorts Zoëtry Wellness & Spa Resorts App",
+      "imageUrl": "./assets/work/allin/zoetry/zoetry-thumb-wide.jpg"
     }
-  },
-  {
+    },
+    {
     "id": "florida-blue-payments-experience",
     "heading": {
       "title": "Payments Experience",
@@ -43,6 +43,29 @@
       "notes": "Led production-ready visual and UI design across web, mobile apps, and AI chat experiences in a highly regulated healthcare environment. Designed and maintained WCAG 2.1–compliant components, layouts, and visual systems supporting marketing, product, and communications initiatives. Partnered cross-functionally with UX, Product, Engineering, Content, and Marketing to deliver dev-ready designs with minimal oversight, balancing accessibility, brand integrity, and speed at enterprise scale.",
       "caption": "Above: Florida Blue Mobile App",
       "imageUrl": "./assets/work/fb/fb-payments_thumb.jpg"
+    }
+  },
+    {
+    "id": "florida-blue-data-sharing",
+    "heading": {
+      "title": "Privacy & Data Interface",
+      "main": "Privacy & Data",
+      "accent": "interface"
+    },
+    "year": 2023,
+    "users": 6000000,
+    "complexity": 4,
+    "opacity": 0.8,
+    "hasCaseStudy": true,
+    "htmlInclude": "./includes/case-studies/data-sharing.html",
+    "meta": {
+      "type": "Regulated Platform Design",
+      "client": "Florida Blue",
+      "role": "Visual Designer",
+      "disciplines": "PHI regulations, Legal compliance, Agile teams",
+      "notes": "Highly regulated data-sharing control interface for sensitive information",
+      "caption": "Above: Data-sharing table",
+      "imageUrl": "./assets/work/fb/data-sharing/data-sharing-table_thumb.png"
     }
   },
   {
@@ -69,51 +92,6 @@
     }
   },
   {
-    "id": "AMResorts-multi-platform-app",
-    "heading": {
-      "title": "Multi-Resort App",
-      "main": "Multi-Resort",
-      "accent": "app"
-    },
-    "year": 2017,
-    "users":350000,
-    "complexity": 5,
-    "opacity": 0.8,
-    "hasCaseStudy": false,
-    "htmlInclude": "./includes/case-studies/layer3-test.html",
-    "meta": {
-      "type": "Enterprise Platform",
-      "client": "AMResorts",
-      "role": "UX Designer",
-      "disciplines": "UX/UI Design, Dev collaboration, Cross-platform implementation, Agile teams",
-      "notes": "Contributed interaction and visual design to a large-scale, multi-platform hospitality app spanning pre-arrival, on-property, and in-transit guest experiences across multiple luxury resort brands. Delivered high-fidelity UI systems adaptable across mobile, tablet, and on-property contexts while collaborating closely with product and development teams. Supported system consistency, scalability, and brand differentiation across a complex ecosystem of travel touchpoints.",
-      "caption": "Above: AMResorts Zoëtry Wellness & Spa Resorts App",
-      "imageUrl": "./assets/work/allin/zoetry/zoetry-thumb-wide.jpg"
-    }
-  },
-  {
-    "id": "outside-in-art-exhibition-campaign",
-    "heading": {
-      "title": "Exhibition Creative Direction",
-      "main": "Exhibition",
-      "accent": "creative direction"
-    },
-    "year": 2017,
-    "users": 5000,
-    "complexity": 3,
-    "opacity": 0.3,
-    "hasCaseStudy": false,
-    "meta": {
-      "type": "Non-Profit",
-      "client": "Art and Culture Center/Hollywood",
-      "role": "Web & Graphic Design Manager",
-      "disciplines": "Graphic & web design, print production, vinyl installation",
-      "notes": "Designed and executed a multi-platform exhibition campaign spanning print, digital, web, and email to promote a gallery exhibition within the South Florida arts community. Delivered cohesive visual storytelling across Miami Rail magazine ads, brochures, digital placements, and a custom-coded landing page, balancing curatorial intent with audience reach and production constraints.",
-      "caption": "Artwork by London Police",
-      "imageUrl": "./assets/work/acch/outsideIn_miamiRailAd.jpg"
-    }
-  },
-    {
     "id": "allin-interactive-material-design-skin",
     "heading": {
       "title": "Material Interface Design",
