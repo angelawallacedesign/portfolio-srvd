@@ -177,11 +177,22 @@ svg.plot-d6a7b5 g[aria-label="y-axis tick label"] {
   display: none;
 }
 
+.section[data-section="projects"] .toggle-wrapper > .layout-section-body:not(#project-list) {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  max-height: 100%;
+  overflow: hidden;
+}
+
 .chart-container {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: 12px;
+  align-self: start;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .y-axis-labels {
@@ -191,6 +202,7 @@ svg.plot-d6a7b5 g[aria-label="y-axis tick label"] {
   justify-content: space-between;
   font-family: Inter, system-ui, sans-serif;
   font-weight: 500;
+  min-height: 0;
 }
 
 .y-axis-labels span:nth-child(even) {
@@ -200,6 +212,15 @@ svg.plot-d6a7b5 g[aria-label="y-axis tick label"] {
 #chart {
   grid-column: 2;
   grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  /* align-items: flex-start; ChatGPT recommended to remove this, I observed no change in desktop or responsive */
+  overflow: hidden;
+}
+
+#chart svg {
+  width: auto;
+  max-height: 100%;
 }
 
 .x-axis-label {
