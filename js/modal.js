@@ -6,8 +6,121 @@ import { renderOverlayPanel } from "./components.js";
 
 import { positionOverlayPanel } from "./chart.js";
 let overlayTriangle = null;
+let modalOpenRunId = 0;
+
+function nextFrame() {
+  return new Promise(resolve => requestAnimationFrame(resolve));
+}
+
+async function waitForPanelMedia(panelEl) {
+  const images = [...panelEl.querySelectorAll("img")];
+
+  await Promise.all(
+    images.map(image => {
+      const decodeImage = () => {
+        if (typeof image.decode === "function") {
+          return image.decode().catch(() => {});
+        }
+
+        return Promise.resolve();
+      };
+
+      if (image.complete) {
+        return decodeImage();
+      }
+
+      return new Promise(resolve => {
+        const done = () => {
+          image.removeEventListener("load", done);
+          image.removeEventListener("error", done);
+          decodeImage().finally(resolve);
+        };
+
+        image.addEventListener("load", done, { once: true });
+        image.addEventListener("error", done, { once: true });
+      });
+    })
+  );
+}
+
+function positionOverlayTriangle(circle, overlayRoot, panelEl, triangleEl) {
+  const nodeRect = circle.getBoundingClientRect();
+  const panelRect = panelEl.getBoundingClientRect();
+  const panelHeight = Math.round(panelRect.height);
+  const overlayRect = overlayRoot.getBoundingClientRect();
+  const MIN_WEDGE = 4; // px — anything smaller is visually meaningless
+
+  triangleEl.style.height = `${panelHeight}px`;
+  triangleEl.setAttribute("height", panelHeight);
+  triangleEl.setAttribute("viewBox", `0 0 32 ${panelHeight}`);
+
+  // Align triangle top to panel top
+  triangleEl.style.position = "absolute";
+  triangleEl.style.top = `${panelRect.top - overlayRect.top}px`;
+
+  const panelIsRightOfNode = panelRect.left > nodeRect.left;
+  const nodeCenterX = nodeRect.left + nodeRect.width / 2;
+  const nodeCenterY = nodeRect.top + nodeRect.height / 2;
+  const Ay = nodeCenterY - panelRect.top;
+  const Ayclamped = Math.max(0, Math.min(panelHeight, Ay));
+
+  if (panelIsRightOfNode) {
+    const wedgeWidth = panelRect.left - nodeCenterX;
+
+    if (wedgeWidth > MIN_WEDGE) {
+      // wedge logic A (UNCHANGED)
+      triangleEl.style.width = `${wedgeWidth}px`;
+      triangleEl.setAttribute("width", wedgeWidth);
+      triangleEl.setAttribute(
+        "viewBox",
+        `0 0 ${wedgeWidth} ${panelHeight}`
+      );
+
+      triangleEl.style.left =
+      `${panelRect.left - overlayRect.left - wedgeWidth}px`;
+
+      triangleEl.innerHTML = `
+    <polygon
+      points="${wedgeWidth},0 ${wedgeWidth},${panelHeight} 0,${Ayclamped}"
+      fill="var(--overlay-triangle-bg)"
+    />
+  `;
+
+      triangleEl.classList.add("is-visible");
+    } else {
+      triangleEl.classList.remove("is-visible");
+    }
+  } else {
+    const wedgeWidth = nodeCenterX - panelRect.right;
+
+    if (wedgeWidth > MIN_WEDGE) {
+      // wedge logic B (UNCHANGED)
+      triangleEl.style.width = `${wedgeWidth}px`;
+      triangleEl.setAttribute("width", wedgeWidth);
+      triangleEl.setAttribute(
+        "viewBox",
+        `0 0 ${wedgeWidth} ${panelHeight}`
+      );
+
+      triangleEl.style.left =
+      `${panelRect.right - overlayRect.left}px`;
+
+      triangleEl.innerHTML = `
+    <polygon
+      points="0,0 0,${panelHeight} ${wedgeWidth},${Ayclamped}"
+      fill="var(--overlay-triangle-bg)"
+    />
+  `;
+
+      triangleEl.classList.add("is-visible");
+    } else {
+      triangleEl.classList.remove("is-visible");
+    }
+  }
+}
 
 export function openModal(data) {
+  const openRunId = ++modalOpenRunId;
   const modalRoot = document.getElementById("modal-root");
   
   modalRoot.innerHTML = `
@@ -63,106 +176,14 @@ export function openModal(data) {
     rail.setAttribute("data-locked", "true");
   }
 
-  
-  
-  requestAnimationFrame(() => {
-    positionOverlayPanel(data.__circle__);
-    
-    requestAnimationFrame(() => {
-      const nodeRect = data.__circle__.getBoundingClientRect();
-      const panelEl = document.querySelector(".overlay__panel");
-      const panelRect = panelEl.getBoundingClientRect();
-      
-      panelEl.getBoundingClientRect(); // ✅ FORCE LAYOUT
-      
-      const panelHeight = Math.round(panelRect.height);
-      const overlayRect = overlayRoot.getBoundingClientRect();
-      const MIN_WEDGE = 4; // px — anything smaller is visually meaningless
-
-      overlayTriangle.style.height = `${panelHeight}px`;
-      overlayTriangle.setAttribute("height", panelHeight);
-      overlayTriangle.setAttribute("viewBox", `0 0 32 ${panelHeight}`);
-
-    
-    // Align triangle top to panel top
-    overlayTriangle.style.position = "absolute";
-    overlayTriangle.style.top = `${panelRect.top - overlayRect.top}px`;
-    
-    const panelIsRightOfNode = panelRect.left > nodeRect.left;
-    const nodeCenterX = nodeRect.left + nodeRect.width / 2;
-    const nodeCenterY = nodeRect.top + nodeRect.height / 2;
-    // Node radius (half the diameter)
-    const nodeRadius = nodeRect.width / 2;
-    const Ay = nodeCenterY - panelRect.top;
-    const Ayclamped = Math.max(0, Math.min(panelHeight, Ay));
-    
-    
-    if (panelIsRightOfNode) {
-      const wedgeWidth = panelRect.left - nodeCenterX;
-      
-      if (wedgeWidth > MIN_WEDGE) {
-        // wedge logic A (UNCHANGED)
-        overlayTriangle.style.width = `${wedgeWidth}px`;
-        overlayTriangle.setAttribute("width", wedgeWidth);
-        overlayTriangle.setAttribute(
-          "viewBox",
-          `0 0 ${wedgeWidth} ${panelHeight}`
-        );
-        
-        overlayTriangle.style.left =
-        `${panelRect.left - overlayRect.left - wedgeWidth}px`;
-        
-        overlayTriangle.innerHTML = `
-      <polygon
-        points="${wedgeWidth},0 ${wedgeWidth},${panelHeight} 0,${Ayclamped}"
-        fill="var(--overlay-triangle-bg)"
-      />
-    `;
-        
-        overlayTriangle.classList.add("is-visible");
-      } else {
-        overlayTriangle.classList.remove("is-visible");
-      }
-    } else {
-      const wedgeWidth = nodeCenterX - panelRect.right;
-      
-      if (wedgeWidth > MIN_WEDGE) {
-        // wedge logic B (UNCHANGED)
-        overlayTriangle.style.width = `${wedgeWidth}px`;
-         overlayTriangle.setAttribute("width", wedgeWidth);
-        overlayTriangle.setAttribute(
-          "viewBox",
-          `0 0 ${wedgeWidth} ${panelHeight}`
-        );
-        
-        overlayTriangle.style.left =
-        `${panelRect.right - overlayRect.left}px`;
-        
-        overlayTriangle.innerHTML = `
-      <polygon
-        points="0,0 0,${panelHeight} ${wedgeWidth},${Ayclamped}"
-        fill="var(--overlay-triangle-bg)"
-      />
-    `;
-        
-        overlayTriangle.classList.add("is-visible");
-      } else {
-        overlayTriangle.classList.remove("is-visible");
-      }
-    }
-    
-    // reveal panel AFTER triangle animation completes
-    setTimeout(() => {
-      panelEl.style.transition = `opacity var(--overlay-panel-enter-duration) ease-out`;
-      panelEl.style.opacity = "1";
-    }, parseInt(
-      getComputedStyle(document.documentElement)
-      .getPropertyValue("--overlay-triangle-enter-duration")
-    ));
-    
-    
+  prepareOverlayGeometry({
+    circle: data.__circle__,
+    modalRoot,
+    openRunId,
+    overlayRoot,
+    panelEl,
+    triangleEl: overlayTriangle
   });
-});
   
   document
   .getElementById("close-modal")
@@ -180,6 +201,7 @@ export function openModal(data) {
 }
 
 function closeModal() {
+  modalOpenRunId++;
   const modalRoot = document.getElementById("modal-root");
   if (overlayTriangle) overlayTriangle.remove();
   if (overlayTriangle) {
@@ -191,6 +213,55 @@ function closeModal() {
   }
 
   modalRoot.innerHTML = "";
+}
+
+async function prepareOverlayGeometry({
+  circle,
+  modalRoot,
+  openRunId,
+  overlayRoot,
+  panelEl,
+  triangleEl
+}) {
+  await waitForPanelMedia(panelEl);
+  await nextFrame();
+
+  if (
+    openRunId !== modalOpenRunId ||
+    !modalRoot.contains(panelEl) ||
+    !overlayRoot.contains(triangleEl)
+  ) {
+    return;
+  }
+
+  positionOverlayPanel(circle);
+  await nextFrame();
+
+  if (
+    openRunId !== modalOpenRunId ||
+    !modalRoot.contains(panelEl) ||
+    !overlayRoot.contains(triangleEl)
+  ) {
+    return;
+  }
+
+  positionOverlayTriangle(circle, overlayRoot, panelEl, triangleEl);
+
+  // reveal panel AFTER triangle animation completes
+  setTimeout(() => {
+    if (
+      openRunId !== modalOpenRunId ||
+      !modalRoot.contains(panelEl)
+    ) {
+      return;
+    }
+
+    panelEl.style.transition = `opacity var(--overlay-panel-enter-duration) ease-out`;
+    panelEl.style.opacity = "1";
+  }, parseInt(
+    getComputedStyle(document.documentElement)
+    .getPropertyValue("--overlay-triangle-enter-duration")
+  ));
 }
 
 // ======================================================
@@ -262,5 +333,3 @@ export function openCaseStudy(project) {
 // ======================================================
 // END LAYER 3 — CASE STUDY OVERLAY
 // ======================================================
-
-

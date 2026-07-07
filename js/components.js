@@ -9,7 +9,8 @@ export function renderOverlayPanel(data) {
             <img
               src="${data.meta.imageUrl}"
               alt="${data.title} cover image"
-              loading="lazy"
+              loading="eager"
+              decoding="async"
             />
           </div>
         </div>
