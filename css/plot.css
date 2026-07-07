@@ -49,6 +49,11 @@
   background: var(--color-surface);
 }
 
+.overlay__panel img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 /* Overlay Panel Shadow Triangle */
 .overlay-triangle {
   opacity: 0;
