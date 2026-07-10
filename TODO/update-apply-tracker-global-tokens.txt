@@ -1,3 +1,3 @@
 Update Apply Tracker color tokens to global shared tokens:
 
-https://angelawallacedesign.github.io/shared/global-tokens.css
+shared/global-tokens.css

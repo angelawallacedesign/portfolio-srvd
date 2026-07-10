@@ -1,0 +1,4 @@
+External Shared Assets
+ • Moved /shared back into the portfolio repository after production loading inconsistencies were observed with externally hosted assets.
+ • Goal remains to support a shared asset repository across multiple projects.
+ • Future work includes validating preload behavior, cache invalidation, versioning, deployment sequencing, and graceful failure handling before reintroducing the architecture into production.
