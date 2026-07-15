@@ -33,7 +33,7 @@
     "users": 2000000,
     "complexity": 5,
     "opacity": 1.0,
-    "hasCaseStudy": true,
+    "hasCaseStudy": false,
     "htmlInclude": "./includes/case-studies/fb-payments-experience.html",
     "meta": {
       "type": "Enterprise Platform",
@@ -56,7 +56,7 @@
     "users": 6000000,
     "complexity": 4,
     "opacity": 0.8,
-    "hasCaseStudy": true,
+    "hasCaseStudy": false,
     "htmlInclude": "./includes/case-studies/data-sharing.html",
     "meta": {
       "type": "Regulated Platform Design",
