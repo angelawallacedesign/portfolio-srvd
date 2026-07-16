@@ -1,0 +1,181 @@
+/* =========================
+   SLIDESHOW
+
+   Public API:
+   .slideshow
+   .slideshow__track
+   .slideshow__controls
+   .slideshow__control
+   .slideshow--auto
+   .slideshow--controlled
+   .slideshow--banner
+
+   Legacy aliases are kept for older portfolio markup:
+   .slideshow-track, .slide-show, .slide-show__track,
+   .slide-show__controls, .slide-show__control, .slide-show--banner
+========================= */
+
+.slideshow,
+.slide-show {
+  --slideshow-gap: 0;
+  --slideshow-duration: 40s;
+  --slideshow-transition-duration: 300ms;
+  --slideshow-transition-ease: ease;
+  --slideshow-track-height: auto;
+  --slideshow-auto-image-height: 500px;
+  --slideshow-control-size: 32px;
+  --slideshow-control-offset: 1rem;
+  --slideshow-banner-radius: 24px;
+  --slideshow-banner-bg: #f4f4f4;
+
+  position: relative;
+  width: 100%;
+}
+
+.slideshow {
+  overflow: hidden;
+}
+
+.slideshow--auto {
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.slideshow--controlled,
+.slide-show {
+  overflow: hidden;
+}
+
+.slideshow__track,
+.slideshow-track,
+.slide-show__track {
+  display: flex;
+  flex-direction: row;
+  gap: var(--slideshow-gap);
+  will-change: transform;
+}
+
+.slideshow__track > *,
+.slideshow-track > *,
+.slide-show__track > * {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.slideshow__track > img,
+.slideshow-track > img,
+.slide-show__track > img {
+  display: block;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+.slideshow--auto .slideshow__track,
+.slideshow--auto .slideshow-track,
+.slideshow:not(.slideshow--controlled) .slideshow-track {
+  width: max-content;
+  animation: slideshow-scroll-x var(--slideshow-duration) linear infinite;
+}
+
+.slideshow--auto .slideshow__track > img,
+.slideshow--auto .slideshow-track > img,
+.slideshow:not(.slideshow--controlled) .slideshow-track > img {
+  height: var(--slideshow-auto-image-height);
+}
+
+.slideshow--auto:hover .slideshow__track,
+.slideshow--auto:hover .slideshow-track,
+.slideshow:not(.slideshow--controlled):hover .slideshow-track {
+  animation-play-state: running;
+}
+
+.slideshow--controlled,
+.slide-show {
+  --slideshow-gap: var(--space-md, var(--gap-2, 20px));
+  --slideshow-track-height: 350px;
+}
+
+.slideshow--controlled .slideshow__track,
+.slideshow--controlled .slide-show__track,
+.slide-show .slide-show__track,
+.slide-show .slideshow__track {
+  height: var(--slideshow-track-height);
+  scroll-snap-type: x mandatory;
+  transition: transform var(--slideshow-transition-duration) var(--slideshow-transition-ease);
+}
+
+.slideshow--controlled .slideshow__track > *,
+.slideshow--controlled .slide-show__track > *,
+.slide-show .slide-show__track > *,
+.slide-show .slideshow__track > * {
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.slideshow--controlled .slideshow__track > img,
+.slideshow--controlled .slide-show__track > img,
+.slide-show .slide-show__track > img,
+.slide-show .slideshow__track > img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.slideshow__controls,
+.slide-show__controls {
+  position: absolute;
+  right: var(--slideshow-control-offset);
+  bottom: var(--slideshow-control-offset);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+.slideshow__control,
+.slide-show__control {
+  width: var(--slideshow-control-size);
+  height: var(--slideshow-control-size);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.slideshow__control[aria-disabled="true"],
+.slide-show__control[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.slideshow--banner,
+.slide-show--banner {
+  border-radius: var(--slideshow-banner-radius);
+  overflow: hidden;
+  padding: var(--gap-1, 12px) 0;
+  background-color: var(--slideshow-banner-bg);
+}
+
+@keyframes slideshow-scroll-x {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideshow--auto .slideshow__track,
+  .slideshow--auto .slideshow-track,
+  .slideshow:not(.slideshow--controlled) .slideshow-track {
+    animation: none;
+  }
+
+  .slideshow--controlled .slideshow__track,
+  .slideshow--controlled .slide-show__track,
+  .slide-show .slide-show__track,
+  .slide-show .slideshow__track {
+    transition: none;
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "cs-gap-xs": {
+    "$type": "number",
+    "$value": 10,
+    "$description": "mobile rails",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:25:63",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-gap-sm": {
+    "$type": "number",
+    "$value": 24,
+    "$description": "desktop, tablet rails",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:25:64",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-gap-md": {
+    "$type": "number",
+    "$value": 40,
+    "$description": "grid columns",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:25:65",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-gap-lg": {
+    "$type": "number",
+    "$value": 80,
+    "$description": "case study top/bottom vertical padding",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:25:66",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-gap-xl": {
+    "$type": "number",
+    "$value": 100,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:61:39",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-gap-xxl": {
+    "$type": "number",
+    "$value": 140,
+    "$description": "case study body vertical padding",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:25:67",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-space-sm": {
+    "$type": "number",
+    "$value": 20,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:136:43",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-space-md": {
+    "$type": "number",
+    "$value": 40,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:136:44",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "cs-space-lg": {
+    "$type": "number",
+    "$value": 120,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:136:45",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}

@@ -1,5 +1,28 @@
 [
-    {
+  {
+    "id": "florida-blue-multimodal-ai",
+    "heading": {
+      "title": "Multimodal AI Interfaces",
+      "main": "Multimodal AI",
+      "accent": "Interfaces"
+    },
+    "year": 2025,
+    "users": 2000000,
+    "complexity": 5,
+    "opacity": 1.0,
+    "hasCaseStudy": true,
+    "htmlInclude": "./includes/case-studies/multimodal-ai.html",
+    "meta": {
+      "type": "Enterprise Platform",
+      "client": "Florida Blue",
+      "role": "Visual designer",
+      "disciplines": "Design systems pattern contribution, Cross-functional agile teams, Generative UI",
+      "notes": "Owned visual design for high-priority user journeys within Florida Blue’s multimodal AI self-service ecosystem, collaborating in an agile matrix team of PMs, interaction designers, and engineers.",
+      "caption": "Above: Florida Blue Mobile App",
+      "imageUrl": "./assets/work/fb/multimodal-ai/vivr_more-menu.png"
+    }
+    },
+  {
     "id": "AMResorts-multi-brand-app",
     "heading": {
       "title": "Multi-Brand App",
@@ -44,7 +67,7 @@
       "caption": "Above: Florida Blue Mobile App",
       "imageUrl": "./assets/work/fb/fb-payments_thumb.jpg"
     }
-  },
+    },
     {
     "id": "florida-blue-data-sharing",
     "heading": {

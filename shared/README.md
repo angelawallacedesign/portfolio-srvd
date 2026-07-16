@@ -34,3 +34,54 @@ Rotation utility classes such as `rotate-45`, `rotate-90`, and `rotate-180` keep
 Wrapper elements own layout and sizing. Injected SVGs own rendering. Layout, sizing, and rotation are intentionally independent concerns so icons remain composable, reusable, and consistent across products while preserving a stable public API.
 
 Default theme values intentionally mirror the authored AWD palette. Dark and night themes override only token values, allowing component presentation styles to remain stable.
+
+## Slideshow Component
+
+The shared slideshow library lives in:
+
+- `shared/css/slideshow.css`
+- `shared/js/slideshow.js`
+
+`shared/css/global-components.css` imports the slideshow styles. Link `slideshow.css` directly only when a page needs the slideshow without the rest of the shared component bundle.
+
+Use `.slideshow` as the base component and add variants as needed:
+
+```html
+<div class="slideshow slideshow--controlled slideshow--banner" data-slideshow>
+  <div class="slideshow__track">
+    <img src="slide-1.png" alt="First slide">
+    <img src="slide-2.png" alt="Second slide">
+  </div>
+
+  <div class="slideshow__controls">
+    <button class="control control--arrow slideshow__control" data-slideshow-prev>
+      <span class="icon rotate-270" data-icon="arrow" aria-hidden="true"></span>
+    </button>
+    <button class="control control--arrow slideshow__control" data-slideshow-next>
+      <span class="icon rotate-90" data-icon="arrow" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+```
+
+For auto-scrolling marquees, duplicate the slide set once in the track and use `.slideshow--auto`:
+
+```html
+<div class="slideshow slideshow--auto">
+  <div class="slideshow__track">
+    <!-- original slides -->
+    <!-- duplicate slides for seamless looping -->
+  </div>
+</div>
+```
+
+`shared/js/base.js` auto-initializes controlled slideshows when it is loaded. Pages can also initialize explicitly:
+
+```js
+import { initSlideshow, initSlideshows } from './shared/js/slideshow.js';
+
+initSlideshows();
+initSlideshow(document.querySelector('[data-slideshow]'));
+```
+
+Legacy `.slide-show*` markup and `initSlideShow` are still supported as migration aliases. New code should use the `.slideshow*` namespace.

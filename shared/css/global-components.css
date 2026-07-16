@@ -39,6 +39,8 @@ Also available:
   <span class="icon icon-16" data-icon="chevron"></span>
 ========================= */
 
+@import url("./slideshow.css");
+
 .icon {
   --icon-size: 24px;
   --icon-rotation: 0deg;
