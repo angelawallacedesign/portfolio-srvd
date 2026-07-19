@@ -577,6 +577,7 @@ body.is-layer-3-open {
   article.layer-3 {
     gap:10px;
   }
+  
 
  .layer-3-stage {
     width: 100%;
@@ -585,6 +586,9 @@ body.is-layer-3-open {
   .layer-3 .pattern-intro .intro-thumb img {
     height: auto;
   }
+  .component-summary dl {
+        grid-template-columns: 1fr;
+    }
   
 .layer-3 {
   & main.case-body {

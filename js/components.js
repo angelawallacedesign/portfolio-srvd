@@ -43,7 +43,7 @@ export function renderOverlayPanel(data) {
                     data-project-id="${data.id}"
                     class="primary-btn-small"
                   >
-                    View Case Study
+                    View Project
                   </a>
                 </div>
               `
@@ -92,7 +92,7 @@ export function renderProjectCard(data) {
             data-project-id="${data.id}"
             class="primary-btn-small"
           >
-            View Case Study
+            View Project
           </a>
         </div>
         `

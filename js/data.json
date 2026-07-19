@@ -1,27 +1,27 @@
 [
     {
-    "id": "AMResorts-multi-brand-app",
-    "heading": {
-      "title": "Multi-Brand App",
-      "main": "Multi-Brand",
-      "accent": "app"
-    },
-    "year": 2017,
-    "users":350000,
-    "complexity": 5,
-    "opacity": 0.8,
-    "hasCaseStudy": false,
-    "htmlInclude": "./includes/case-studies/layer3-test.html",
-    "meta": {
-      "type": "Enterprise Platform",
-      "client": "AMResorts",
-      "role": "UX Designer",
-      "disciplines": "UX/UI Design, Dev collaboration, Cross-platform implementation, Agile teams",
-      "notes": "Contributed interaction and visual design to a large-scale, multi-platform hospitality app spanning pre-arrival, on-property, and in-transit guest experiences across multiple luxury resort brands. Delivered high-fidelity UI systems adaptable across mobile, tablet, and on-property contexts while collaborating closely with product and development teams. Supported system consistency, scalability, and brand differentiation across a complex ecosystem of travel touchpoints.",
-      "caption": "Above: AMResorts Zoëtry Wellness & Spa Resorts App",
-      "imageUrl": "./assets/work/allin/zoetry/zoetry-thumb-wide.jpg"
-    }
-    },
+  "id": "designing-with-ai",
+  "heading": {
+    "title": "Designing with AI",
+    "main": "Designing",
+    "accent": "with AI"
+  },
+  "year": 2026,
+  "users": 0,
+  "complexity": 5,
+  "opacity": 0.8,
+  "hasCaseStudy": true,
+  "htmlInclude": "./includes/projects/designing-with-ai.html",
+  "meta": {
+    "type": "AI-Enabled Product Design",
+    "client": "Angela Wallace Design",
+    "role": "AI-Enabled Product Designer",
+    "disciplines": "Product Strategy, Visual Design, Interaction Design, AI-Assisted Discovery, Front-End Prototyping, Technical Documentation",
+    "notes": "A human-directed AI workflow for taking digital products from early sketches to refined interfaces, working HTML, CSS, and JavaScript prototypes, and developer-ready specifications. Using AI as a design and engineering partner, I direct discovery, evaluate recommendations, refine interactions, review code, document decisions, and maintain ownership of the final product experience.",
+    "caption": "Above: Design Inspector, a working product developed through an AI-assisted design and paired-programming workflow",
+    "imageUrl": "./assets/work/awd/design-inspector/ai-assisted-inspector_hero-dark_thumb2.webp"
+  }
+},
     {
     "id": "florida-blue-payments-experience",
     "heading": {

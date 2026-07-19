@@ -145,6 +145,12 @@ img, svg { max-width: 100%; height: auto; display: block; }
   max-height: 500px;
 }
 
+.content_2-col {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-3);
+}
+
 
 /* =========================
    PADDING & ALIGNMENT
@@ -477,6 +483,10 @@ article.project-card img {
 }
 
 @media (max-width: 480px) {
+  .content_2-col {
+  flex-direction: column;
+}
+
   .section header h2 {
     font-size: 1.875rem;
   }
