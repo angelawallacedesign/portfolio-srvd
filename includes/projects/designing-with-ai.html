@@ -27,8 +27,16 @@
                 </header>
 
                 <p>
-                AI has expanded my role from designing interfaces to shaping complete product experiences. I use AI as a design and engineering partner to move from discovery to a refined interface, working prototype, documented system, and developer-ready specification. My role remains active throughout: establishing the direction, defining constraints, evaluating recommendations, editing the design, reviewing the code, and deciding what belongs in the final product.
+                    I use AI to extend the range of product work I can execute without replacing design judgment. It allows me to move from an ambiguous idea to a defined product direction, refined interface, working prototype, documented system, and developer-ready specification. Throughout the process, I remain responsible for establishing the direction, defining constraints, evaluating recommendations, reviewing the implementation, and deciding what belongs in the final product.
                 </p>
+
+                <p>
+                    This workflow allows me to contribute across the product design lifecycle while bringing specialist depth in visual design and design systems. In a lean product team, I can develop an idea far enough for stakeholders to evaluate it and for engineers to understand what should be built, how it should behave, and why key decisions were made.
+                </p>
+
+                <blockquote class="pattern-callout--hero">
+                    I can take a digital product from an initial sketch to a working, documented prototype while maintaining ownership of the design decisions.
+                </blockquote>
 
                 <!--<ul class="list list--check">
                 <li>Designed a dashboard component highlighting current payment status and billing actions</li>
@@ -82,15 +90,15 @@
                             <span class="caption">To gain clarity, I'll sketch to work out interactions between iterative design passes</span>
                         </div>
                         <p>
-                            My process often begins away from the screen, with a sketch that captures the underlying interaction or information model. I use AI to examine the concept, identify missing states, challenge assumptions, and suggest ways the interface could behave. Those conversations help me turn an incomplete idea into a clearer product direction before investing time in high-fidelity design or code.
+                            My process often begins away from the screen, with a sketch that captures an interaction or unresolved product question. I use AI to examine the concept, identify missing states, challenge assumptions, and explore how the interface could behave. These conversations help transform an incomplete idea into a clearer product direction before I invest time in high-fidelity design or code.
                         </p>
                         <p>
-                            I may ask AI to translate the sketch into an initial wireframe or interface proposal, but I do not treat the first output as the solution. I compare it against the original intent, remove unnecessary complexity, refine the hierarchy, and redirect the work when the interface begins solving the wrong problem. This creates a rapid discovery loop in which ideas become visible and testable early.
+                            I may ask AI to translate the sketch into an initial wireframe, but I do not treat the first output as the solution. I compare it with the original intent, remove unnecessary complexity, refine the hierarchy, and redirect the work when the interface begins solving the wrong problem.
                         </p>
                     </div>
                 </div>
                 
-                <!--<div>
+                <div>
                     <h3 class="list__title">Capabilities:</h3>
                     <ul class="list list--check">
                         <li>Concept development</li>
@@ -100,7 +108,7 @@
                         <li>Feature definition</li>
                         <li>Design critique</li>
                     </ul>
-                </div>-->
+                </div>
                  
             </section>
 
@@ -114,10 +122,10 @@
                     <div class="intro-layout">
                         
                         <p>
-                            Working effectively with an AI agent requires more than writing a single prompt. I use ChatGPT to establish the product context, explain what has already been decided, define constraints, and give the agent enough information to reason with me. The agent and I are a team. I then steer the conversation through targeted questions, corrections, comparisons, and increasingly specific decisions.
+                            Working effectively with an AI agent requires more than writing a single prompt. I establish the product context, document what has already been decided, define constraints, and provide enough information for the agent to reason within the project. I then steer the conversation through targeted questions, corrections, comparisons, and increasingly specific decisions.
                         </p>
                         <p>
-                            This process allows me to use AI for discovery, defining requirements, design critique, alternative exploration, state planning, accessibility considerations, technical feasibility, and architectural reasoning. I can ask the agent to defend a recommendation, expose tradeoffs, or reconsider an approach when it creates unnecessary complexity. The conversation becomes part of the design process—not a shortcut around it.
+                            I use these conversations for discovery, requirements definition, design critique, state planning, accessibility, technical feasibility, and architectural reasoning. I can ask the agent to defend a recommendation, expose tradeoffs, or reconsider an approach that introduces unnecessary complexity. Intentional conversation becomes part of the design process—not a shortcut around it.
                         </p>
                     </div>
                 </div>
@@ -156,7 +164,7 @@
             
                 <div class="pattern-intro thumb">
                     <header class="section-header">
-                        <h2>Prototyping in working code</h2>
+                        <h2>Prototyping in code</h2>
                     </header>
                     <div class="intro-layout">
                         <div class="intro-thumb">
@@ -164,10 +172,10 @@
                             <span class="caption">I use VS Code to edit prototypes and perform code reviews.</span>
                         </div>
                         <p>
-                            I use Codex to translate approved design direction into working HTML, CSS, and JavaScript prototypes in Github branches. The code allows me to evaluate behavior that static screens cannot fully communicate, including responsive layouts, interactive states, panel transitions, tooltips, animations, and data visualizations. I monitor while the agent builds, steer if needed, review in the browser, test interactions, and refine the experience and code through iterative passes.
+                            I use a coding agent to translate approved design direction into working HTML, CSS, and JavaScript prototypes developed in Github branches. The code allows me to evaluate behavior that static screens cannot fully communicate, including responsive layouts, interactive states, panel transitions, tooltips, animations, and data visualizations. I monitor while the agent builds, steer if needed, review in the browser, test interactions, and refine the experience and code through iterative passes.
                         </p>
                         <p>
-                            I do not hand the agent an open-ended request and wait for a finished product. I define the intended behavior, work within the existing architecture, review what changed, and steer the implementation when it adds too much code or departs from the design system. This paired-programming workflow gives me greater control over execution while helping me develop stronger technical judgment.
+                            I define the intended behavior, preserve the relevant architecture, monitor the implementation, and test each iteration in the browser. My front-end background allows me to review the structure, identify unnecessary complexity, and make targeted code edits when that is the clearest solution.
                         </p>
                     </div>
                 </div>
@@ -185,23 +193,22 @@
                     </ul>
                 </div>
 
-                <p>Selecting a component will update the existing inspector without requiring the interface to be rebuilt. The goal is to make the relationships between visual design, interaction behavior, accessibility, and implementation easier to understand.</p>
                  
             </section>
 
-            <!-- NEW SECTION 
+            <!-- NEW SECTION --
             <section class="case-section">
             
                 <div class="pattern-intro thumb">
                     <header class="section-header">
-                        <h2>Working Prototype Example</h2>
+                        <h2>Working Prototype: Design Inspector</h2>
                     </header>
                     <div class="intro-layout">
                         <p>
-                            The Design Inspector is an internal tool I developed to make the reasoning behind an interface visible. A designer or developer can inspect selected components and review curated information about their tokens, classes, states, and accessibility requirements. The concept began with a rough sketch and evolved through interface exploration, architectural discussions, coded prototypes, browser testing, and detailed product documentation.
+                            The Design Inspector is an internal product concept I developed to make the reasoning behind an interface easier to understand. Designers and developers can inspect selected components and review curated information about their tokens, classes, states, and accessibility requirements. The concept progressed from a rough sketch through feature definition, interface exploration, architectural discussions, coded prototypes, browser testing, and product documentation.
                         </p>
                         <p>
-                            AI helped me reason through questions such as component scoping, runtime inspection, data annotation, panel behavior, and the boundary between automated discovery and designer-curated intent. I made the final product decisions, refined the visual system, and deliberately chose a lightweight architecture that reuses existing classes and tokens. The resulting prototype demonstrates how AI can support both product design and the creation of tools that improve design-to-development collaboration.
+                            While developing the prototype, I used AI to reason through component scoping, runtime inspection, data annotation, panel behavior, and the boundary between automated discovery and designer-curated intent. I made the final product decisions, refined the visual system, and selected a lightweight architecture that reuses existing classes and tokens.
                         </p>
                     </div>
                 </div>
@@ -224,7 +231,7 @@
 
                 <blockquote class="component-blockquote result">
                     <span class="result-label">Goal</span>
-                    <p>Make the relationships between visual design, interaction behavior, accessibility, and implementation easier to understand.</p>
+                    <p>Make the relationships between visual design, interaction behavior, accessibility, and implementation easier for the product team to understand.</p>
                 </blockquote>
 
                 
@@ -244,10 +251,10 @@
                             <span class="caption">Pushing bug fixes in Github</span>
                         </div>
                         <p>
-                            Once an experience has been validated, I use AI to help convert the decisions made during design into structured documentation. Depending on the product, this may include a product brief, feature specification, behavior specification, functional requirements, interaction notes, accessibility guidance, code examples, or implementation constraints. I review and revise these documents so they describe the approved experience rather than merely summarizing the agent’s output.
+                            Once an experience has been evaluated, I use AI to help convert the approved decisions into structured documentation. Depending on the product, this may include a product brief, feature specification, behavior specification, functional requirements, interaction notes, accessibility guidance, code examples, and implementation constraints.
                         </p>
                         <p>
-                            I also use this workflow to create project documentation, organize Markdown files, prepare Git branches, review changes, and maintain a record of why important decisions were made. This connects discovery, design, implementation, and handoff instead of allowing each phase to become disconnected from the last.
+                            I also use this workflow to organize Markdown documentation, prepare GitHub branches, review changes, document bug fixes, and preserve the reasoning behind important decisions. A product team receives more than a collection of screens: it receives a working model of the experience and a clear record of how the product is intended to behave.
                             <!--<br>
                             <a href="" class="text-link">Read formal specification ↗</a>-->
                         </p>
@@ -279,7 +286,11 @@
                     <div class="intro-layout">
                         
                         <p>
-                            AI increases the range of work I can execute, but it does not replace judgment or accountability. I remain responsible for determining what problem should be solved, whether a recommendation is appropriate, how the experience should feel, and when the work is ready to move forward. I validate the output through visual review, interaction testing, code inspection, iteration, and comparison against the established requirements. In some cases, I have decided not to accept an agent recommendation, instead making a few edits in code myself to solve the larger problem without adding additional complexity.  Since I have a background in front-end development, I am also learning the style of how AI agents write code while I review the code myself, so I can make minor edits if necessary.
+                            AI increases the range and speed of work I can execute, but it does not replace judgment or accountability. I remain responsible for determining which problem should be solved, whether a recommendation is appropriate, how the experience should feel, and when the work is ready to move forward.
+                        </p>
+
+                        <p>
+                            I validate output through visual review, interaction testing, code inspection, and comparison with the established requirements. When an agent recommendation introduces more complexity than the problem requires, I reject it, redirect the implementation, or make the focused code edit myself.
                         </p>
                         
                     </div>
@@ -308,7 +319,7 @@
                         <img src="./assets/work/allin/feature/social-wireframes_4.png" alt="wireframe exerpt from new social media feature">
                     </div>
                     <p>
-                        This approach allows me to operate across product strategy, visual design, interaction design, prototyping, documentation, and early implementation. It is especially valuable for zero-to-one work, where the team needs someone who can bring structure to an unclear idea and steadily turn it into something concrete.
+                        This approach allows me to operate across product definition, visual design, interaction design, coded prototyping, documentation, and early implementation. It is especially valuable for zero-to-one work and lean teams that need someone who can bring structure to an unclear idea and make the experience tangible.
 
                         
                     </p>
@@ -321,7 +332,7 @@
 
             <div class="pattern-reflection">
             <p>
-                “Working with AI has made my design process more technical, more iterative, and more complete. I am no longer limited to showing how a product might work—I can prototype its behavior, examine its architecture, document its decisions, and prepare it for implementation.”
+                “Working with AI has made my design process more technical, iterative, and complete. I am no longer limited to showing how a product might work. I can prototype its behavior, examine its architecture, document its decisions, and prepare it for implementation.”
             </p>
             </div>
 
