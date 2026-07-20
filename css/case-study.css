@@ -573,16 +573,6 @@ body.is-layer-3-open {
 }
 
 @media (max-width: 480px) {
-  .layer-3-close {
-    top: 10px;
-    padding: 10px;
-  }
-  .layer-3-watermark {
-    bottom: 1rem;
-  }
-  .layer-3-watermark .logo {
-    height: 1.8rem;
-  }
   article.layer-3 {
     gap:10px;
   }
@@ -646,7 +636,6 @@ body.is-layer-3-open {
 .layer-3 {
   & main.case-body {
     gap: 50px;
-    padding-inline: 30px;
   }
   & section {
   padding: 0;
