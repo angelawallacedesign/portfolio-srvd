@@ -148,7 +148,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .content_2-col {
   display: flex;
   flex-direction: row;
-  gap: var(--gap-3);
+  /*gap: var(--gap-3);*/
 }
 
 

@@ -591,6 +591,10 @@ body.is-layer-3-open {
   .layer-3 .case-body {
     padding-inline: 30px;
   }
+
+  .layer-3 .intro-thumb {
+    margin-bottom: var(--gap-3);
+  }
   
   .layer-3 header img {
     height: 200px;
@@ -598,10 +602,6 @@ body.is-layer-3-open {
 
   .layer-3 dl.project-meta {
     margin-block-start: 0;
-  }
-
-  .layer-3 .case-section p {
-    margin: 0;
   }
 
   .layer-3 .section-header * {
