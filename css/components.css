@@ -383,3 +383,19 @@ span.caption {
   color:var(--color-text);
   margin: 0.125rem;
 }
+
+
+@media (max-width: 480px) {
+  .project-card-body {
+    gap: 0;
+  }
+  .project-card .project-card-actions, .project-card .project-card-actions .primary-btn-small {
+    width: 100%;
+  }
+  .project-card .project-card-body dl.project-meta dd {
+    padding: 0;
+  }
+  .project-card .project-card-actions .primary-btn-small {
+    margin: 0;
+  }
+}

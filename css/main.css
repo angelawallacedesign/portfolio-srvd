@@ -261,9 +261,9 @@ article.project-card {
   padding: 20px 0;
 }
 
-.project-card:first-child {
+/*.project-card:first-child {
   padding: 0 0 20px;
-}
+}*/
 
 .project-card:last-child {
   border-bottom: 1px solid var(--color-accent);
