@@ -336,7 +336,6 @@
 
 .layer-3 .pattern-intro .intro-layout {
   display: flex;
-  gap: 24px;
   align-items: flex-start;
 }
 
