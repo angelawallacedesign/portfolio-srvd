@@ -337,6 +337,7 @@
 .layer-3 .pattern-intro .intro-layout {
   display: flex;
   align-items: flex-start;
+  gap: var(--gap-3);
 }
 
 /* Thumbnail container */
@@ -483,6 +484,11 @@ Note: Decided to disable and implement scrollbar in a later phase (aw 3/5/26)
   pointer-events: auto; /* ✅ THIS receives wheel/touch */
 
   -webkit-overflow-scrolling: touch;
+}
+
+.layer-3-stage--full-height {
+  height: auto;
+  min-height: 100vh;
 }
 
 /* Section stacking rules */

@@ -1,0 +1,393 @@
+.c-hero-diagram-v1,
+.c-hero-diagram-v1 *,
+.c-hero-diagram-v1 *::before,
+.c-hero-diagram-v1 *::after {
+  box-sizing: border-box;
+}
+
+.c-hero-diagram-v1 {
+  --color-surface-page: #fbfbfa;
+  --color-surface-panel: #f1f1ef;
+  --color-surface-raised: #ffffff;
+  --color-text-primary: #111111;
+  --color-text-secondary: #4f4f4f;
+  --color-text-muted: #7a7a78;
+  --color-border-subtle: #deded9;
+  --color-accent-action: #ff4f84;
+  --color-accent-action-soft: #ffe7ef;
+  --color-accent-support: #bff0f0;
+  --color-state-success: #4e9d63;
+  --color-state-warning: #c28b20;
+  --font-family-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-size-00: 0.75rem;
+  --font-weight-bold: 800;
+  --space-xs: 0.5rem;
+  --space-lg: 1.5rem;
+  --motion-ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  --hero-zoom-top: 24%;
+  --hero-zoom-right: 4%;
+  --hero-zoom-width: 48%;
+  --hero-zoom-height: 44%;
+  --hero-annotation-apps-top: -60px;
+  --hero-annotation-apps-left: -50px;
+  --hero-annotation-status-top: -81px;
+  --hero-annotation-status-right: 90px;
+  --hero-annotation-actions-top: 175px;
+  --hero-annotation-actions-right: -50px;
+  --hero-connector-left: 39.2%;
+  --hero-connector-top: var(--hero-zoom-top);
+  --hero-connector-width: calc(100% - var(--hero-zoom-right) - var(--hero-zoom-width) - var(--hero-connector-left));
+  --hero-connector-height: var(--hero-zoom-height);
+  display: block;
+  max-width: 78rem;
+  margin: 0 auto;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+}
+
+.c-hero-diagram-v1__canvas {
+  position: relative;
+  min-height: 19rem;
+}
+
+.c-hero-diagram-v1__source,
+.c-hero-diagram-v1__zoom {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-raised);
+}
+
+.c-hero-diagram-v1__source {
+  inset: 8% auto auto 5%;
+  width: 38%;
+  height: 58%;
+}
+
+.c-hero-diagram-v1__zoom {
+  inset: var(--hero-zoom-top) var(--hero-zoom-right) auto auto;
+  width: var(--hero-zoom-width);
+  height: var(--hero-zoom-height);
+  box-shadow: -1rem 1rem 0 rgb(17 17 17 / 0.12);
+}
+
+.c-hero-diagram-v1__chrome,
+.c-hero-diagram-v1__nav,
+.c-hero-diagram-v1__content-line,
+.c-hero-diagram-v1__source-highlight,
+.c-hero-diagram-v1__connector,
+.c-hero-diagram-v1__table {
+  position: absolute;
+  display: block;
+}
+
+.c-hero-diagram-v1__chrome {
+  inset: 0 0 auto;
+  height: 13%;
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-panel);
+}
+
+.c-hero-diagram-v1__nav {
+  inset: 24% auto auto 8%;
+  width: 22%;
+  height: 50%;
+  background: color-mix(in srgb, var(--color-accent-support) 18%, var(--color-surface-panel));
+}
+
+.c-hero-diagram-v1__content-line {
+  left: 39%;
+  width: 48%;
+  height: 0.55rem;
+  background: var(--color-surface-panel);
+}
+
+.c-hero-diagram-v1__content-line--one {
+  top: 28%;
+}
+
+.c-hero-diagram-v1__content-line--two {
+  top: 38%;
+  width: 42%;
+}
+
+.c-hero-diagram-v1__content-line--three {
+  top: 52%;
+  width: 50%;
+  height: 24%;
+  border-top: 2px solid var(--color-state-warning);
+}
+
+.c-hero-diagram-v1__source-highlight {
+  inset: 52% 10% auto 39%;
+  height: 24%;
+  border: 1px solid var(--color-state-warning);
+  background: color-mix(in srgb, var(--color-state-warning) 12%, transparent);
+}
+
+.c-hero-diagram-v1__connector {
+  inset: var(--hero-connector-top) auto auto var(--hero-connector-left);
+  width: var(--hero-connector-width);
+  height: var(--hero-connector-height);
+  border: 1px solid color-mix(in srgb, var(--color-state-warning) 62%, transparent);
+  background: color-mix(in srgb, var(--color-state-warning) 12%, transparent);
+  clip-path: polygon(0 32%, 100% 0, 100% 100%, 0 64%);
+  pointer-events: none;
+}
+
+.c-hero-diagram-v1__table {
+  inset: 10% var(--space-lg) auto;
+  width: calc(100% - (var(--space-lg) * 2));
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: clamp(0.48rem, 0.72vw, 0.68rem);
+}
+
+.c-hero-diagram-v1__table th,
+.c-hero-diagram-v1__table td {
+  padding: 0.24rem 2rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  text-align: left;
+}
+
+.c-hero-diagram-v1__table th {
+  border-top: 2px solid var(--color-state-warning);
+  font-weight: var(--font-weight-bold);
+}
+
+.c-hero-diagram-v1__badge {
+  display: inline-block;
+  padding: 0.12rem 0.4rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-panel);
+}
+
+.c-hero-diagram-v1__badge--active {
+  border-color: color-mix(in srgb, var(--color-state-success) 50%, white);
+  background: color-mix(in srgb, var(--color-state-success) 16%, white);
+}
+
+.c-hero-diagram-v1__badge--error {
+  border-color: color-mix(in srgb, var(--color-accent-action) 45%, white);
+  background: var(--color-accent-action-soft);
+}
+
+.c-hero-diagram-v1__annotation-layer {
+  position: absolute;
+  inset: var(--hero-zoom-top) var(--hero-zoom-right) auto auto;
+  z-index: 2;
+  width: var(--hero-zoom-width);
+  height: var(--hero-zoom-height);
+  pointer-events: none;
+}
+
+.c-hero-diagram-v1__annotation {
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  --annotation-angle: 0deg;
+  --annotation-line-length: 8rem;
+  --annotation-line-origin: left center;
+}
+
+.c-hero-diagram-v1__annotation--apps {
+  inset: var(--hero-annotation-apps-top) auto auto var(--hero-annotation-apps-left);
+  --annotation-angle: 30deg;
+  --annotation-line-length: 6.25rem;
+  --annotation-line-origin: left center;
+}
+
+.c-hero-diagram-v1__annotation--status {
+  inset: var(--hero-annotation-status-top) var(--hero-annotation-status-right) auto auto;
+  align-items: flex-end;
+  --annotation-angle: -40deg;
+  --annotation-line-length: 6.5rem;
+  --annotation-line-origin: right center;
+}
+
+.c-hero-diagram-v1__annotation--actions {
+  inset: var(--hero-annotation-actions-top) var(--hero-annotation-actions-right) auto auto;
+  flex-direction: column;
+  align-items: flex-end;
+  --annotation-angle: 25deg;
+  --annotation-line-length: 7rem;
+  --annotation-line-origin: right center;
+}
+
+.c-hero-diagram-v1__annotation-line {
+  display: block;
+  width: var(--annotation-line-length);
+  height: 1px;
+  background: var(--color-accent-action);
+  transform: rotate(var(--annotation-angle));
+  transform-origin: var(--annotation-line-origin);
+}
+
+.c-hero-diagram-v1__annotation--apps .c-hero-diagram-v1__annotation-line {
+  margin-left: 30px;
+}
+
+.c-hero-diagram-v1__annotation--status .c-hero-diagram-v1__annotation-line,
+.c-hero-diagram-v1__annotation--actions .c-hero-diagram-v1__annotation-line {
+  margin-right: 50px;
+}
+
+.c-hero-diagram-v1__annotation-label {
+  color: var(--color-accent-action);
+  font-size: var(--font-size-00);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.c-hero-diagram-v1__annotation--status .c-hero-diagram-v1__annotation-label,
+.c-hero-diagram-v1__annotation--actions .c-hero-diagram-v1__annotation-label {
+  text-align: right;
+}
+
+.c-hero-diagram-v1__annotation--actions .c-hero-diagram-v1__annotation-label {
+  margin-block-start: 3px;
+}
+
+.c-hero-diagram-v1__caption {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-00);
+}
+
+.js .c-hero-diagram-v1__source,
+.js .c-hero-diagram-v1__source-highlight,
+.js .c-hero-diagram-v1__connector,
+.js .c-hero-diagram-v1__zoom,
+.js .c-hero-diagram-v1__annotation {
+  opacity: 0;
+  transition:
+    opacity 780ms var(--motion-ease-emphasis),
+    filter 780ms var(--motion-ease-emphasis),
+    transform 780ms var(--motion-ease-emphasis),
+    clip-path 880ms var(--motion-ease-emphasis);
+}
+
+.js .c-hero-diagram-v1__source {
+  transform: translateY(0.5rem) scale(0.985);
+}
+
+.js .c-hero-diagram-v1__source-highlight {
+  transform: scaleX(0.7);
+  transform-origin: left;
+}
+
+.js .c-hero-diagram-v1__connector {
+  transform: translateX(-0.7rem);
+}
+
+.js .c-hero-diagram-v1__zoom {
+  filter: blur(6px);
+  transform: translateX(-0.65rem) scale(0.96);
+}
+
+.js .c-hero-diagram-v1__annotation {
+  transform: translateY(0.25rem);
+}
+
+.js .c-hero-diagram-v1.is-animating .c-hero-diagram-v1__source {
+  opacity: 1;
+  transform: none;
+  transition-delay: 80ms;
+}
+
+.js .c-hero-diagram-v1.is-animating .c-hero-diagram-v1__source-highlight {
+  opacity: 1;
+  transform: none;
+  transition-delay: 480ms;
+}
+
+.js .c-hero-diagram-v1.is-animating .c-hero-diagram-v1__connector {
+  opacity: 1;
+  transform: none;
+  transition-delay: 680ms;
+}
+
+.js .c-hero-diagram-v1.is-animating .c-hero-diagram-v1__zoom {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition-delay: 880ms;
+}
+
+.js .c-hero-diagram-v1.is-animating .c-hero-diagram-v1__annotation {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1180ms;
+}
+
+@media (max-width: 48rem) {
+  .c-hero-diagram-v1__canvas {
+    min-height: 18rem;
+    overflow: hidden;
+    --hero-zoom-top: 26%;
+    --hero-zoom-right: 4%;
+    --hero-zoom-width: 58%;
+    --hero-zoom-height: 45%;
+    --hero-annotation-apps-top: -16%;
+    --hero-annotation-apps-left: 14%;
+    --hero-annotation-status-top: -16%;
+    --hero-annotation-status-right: 4%;
+    --hero-annotation-actions-top: 120%;
+    --hero-annotation-actions-right: -2%;
+  }
+
+  .c-hero-diagram-v1__source {
+    inset: 10% auto auto 4%;
+    width: 44%;
+    height: 48%;
+  }
+
+  .c-hero-diagram-v1__connector {
+    display: none;
+  }
+
+  .c-hero-diagram-v1__table {
+    inset: 8% var(--space-xs) auto;
+    width: calc(100% - (var(--space-xs) * 2));
+    font-size: 0.38rem;
+  }
+
+  .c-hero-diagram-v1__table th,
+  .c-hero-diagram-v1__table td {
+    padding: 0.1rem 0.12rem;
+  }
+
+  .c-hero-diagram-v1__badge {
+    padding: 0.03rem 0.1rem;
+  }
+
+  .c-hero-diagram-v1__annotation-label {
+    max-width: 5.6rem;
+    font-size: 0.56rem;
+    line-height: 1.05;
+  }
+
+  .c-hero-diagram-v1__annotation--apps {
+    --annotation-angle: 7deg;
+    --annotation-line-length: 4.2rem;
+  }
+
+  .c-hero-diagram-v1__annotation--status {
+    --annotation-angle: -6deg;
+    --annotation-line-length: 3.6rem;
+  }
+
+  .c-hero-diagram-v1__annotation--actions {
+    --annotation-angle: 6deg;
+    --annotation-line-length: 4.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-hero-diagram-v1,
+  .c-hero-diagram-v1 * {
+    transition-duration: 1ms !important;
+  }
+}

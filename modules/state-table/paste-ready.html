@@ -1,0 +1,302 @@
+<!-- Paste-ready State Table: dependency-free component snippet. -->
+<style>
+.c-state-table-v1,
+.c-state-table-v1 *,
+.c-state-table-v1 *::before,
+.c-state-table-v1 *::after {
+  box-sizing: border-box;
+}
+
+.c-state-table-v1 {
+  --color-surface-panel: #f1f1ef;
+  --color-surface-raised: #ffffff;
+  --color-text-primary: #111111;
+  --color-text-secondary: #4f4f4f;
+  --color-text-muted: #7a7a78;
+  --color-border-subtle: #deded9;
+  --color-accent-action: #ff4f84;
+  --color-accent-action-soft: #ffe7ef;
+  --color-state-success: #4e9d63;
+  --font-family-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-size-00: 0.75rem;
+  --font-weight-bold: 800;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-2xl: 3rem;
+  --motion-duration-base: 260ms;
+  --motion-duration-slow: 620ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  display: grid;
+  gap: var(--space-md);
+  max-width: 66rem;
+  margin: 0 auto;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+}
+
+.c-state-table-v1__frame {
+  min-height: 24rem;
+  overflow-x: auto;
+  padding: var(--space-2xl);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-raised);
+}
+
+.c-table-mock-v1 {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+}
+
+.c-table-mock-v1 th,
+.c-table-mock-v1 td {
+  padding: 0.72rem var(--space-sm);
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-00);
+  text-align: left;
+  transition:
+    background var(--motion-duration-base) var(--motion-ease-standard),
+    color var(--motion-duration-base) var(--motion-ease-standard);
+}
+
+.c-table-mock-v1 th {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.c-table-mock-v1__badge {
+  display: inline-block;
+  padding: 0.12rem 0.4rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-panel);
+}
+
+.c-table-mock-v1__badge--active {
+  border-color: color-mix(in srgb, var(--color-state-success) 50%, white);
+  background: color-mix(in srgb, var(--color-state-success) 16%, white);
+}
+
+.c-table-mock-v1__badge--error {
+  border-color: color-mix(in srgb, var(--color-accent-action) 45%, white);
+  background: var(--color-accent-action-soft);
+}
+
+.c-table-mock-v1[data-active-column="app"] th:nth-child(1),
+.c-table-mock-v1[data-active-column="app"] td:nth-child(1),
+.c-table-mock-v1[data-active-column="timestamp"] th:nth-child(2),
+.c-table-mock-v1[data-active-column="timestamp"] td:nth-child(2),
+.c-table-mock-v1[data-active-column="status"] th:nth-child(3),
+.c-table-mock-v1[data-active-column="status"] td:nth-child(3),
+.c-table-mock-v1[data-active-column="action"] th:nth-child(4),
+.c-table-mock-v1[data-active-column="action"] td:nth-child(4) {
+  background: color-mix(in srgb, var(--color-accent-action) 8%, transparent);
+}
+
+.c-state-table-v1__caption {
+  max-width: 48rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-00);
+}
+
+.js .c-state-table-v1[data-state-table] {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity var(--motion-duration-slow) var(--motion-ease-emphasis),
+    transform var(--motion-duration-slow) var(--motion-ease-emphasis);
+}
+
+.js .c-state-table-v1[data-state-table].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 48rem) {
+  .c-state-table-v1__frame {
+    padding: var(--space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-state-table-v1,
+  .c-state-table-v1 * {
+    transition-duration: 1ms !important;
+  }
+}
+
+</style>
+
+<figure class="c-state-table-v1" data-state-table>
+  <div class="c-state-table-v1__frame" aria-hidden="true">
+    <table
+      class="c-table-mock-v1"
+      data-column-inspection-table
+      data-default-caption="Fig. 1 Lightweight inspection table: hover or tap a column to connect table anatomy to implementation meaning."
+    >
+      <thead>
+        <tr>
+          <th scope="col" data-column-key="app">App name</th>
+          <th scope="col" data-column-key="timestamp">Last update</th>
+          <th scope="col" data-column-key="status">Status</th>
+          <th scope="col" data-column-key="action">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ActiveWell</td>
+          <td>10/02/2026</td>
+          <td><span class="c-table-mock-v1__badge">Stopped</span></td>
+          <td>Details</td>
+        </tr>
+        <tr>
+          <td>Wellness Plus</td>
+          <td>10/02/2026</td>
+          <td><span class="c-table-mock-v1__badge c-table-mock-v1__badge--active">Active</span></td>
+          <td>Stop sharing</td>
+        </tr>
+        <tr>
+          <td>OneRecord</td>
+          <td>10/02/2026</td>
+          <td><span class="c-table-mock-v1__badge c-table-mock-v1__badge--error">Expired</span></td>
+          <td>Details</td>
+        </tr>
+        <tr>
+          <td>Total Wellness</td>
+          <td>10/02/2026</td>
+          <td><span class="c-table-mock-v1__badge c-table-mock-v1__badge--active">Active</span></td>
+          <td>Stop sharing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <figcaption class="c-state-table-v1__caption" data-column-inspection-caption>
+    Fig. 1 Lightweight inspection table: hover or tap a column to connect table anatomy to implementation meaning.
+  </figcaption>
+</figure>
+
+
+<script>
+(function () {
+  var columnMessages = {
+    app: "App name maps to the semantic identity column: the reusable row pattern must support recognizable third-party app names before any action is considered.",
+    timestamp:
+      "Last update maps to implementation timing: asynchronous data delays need visible timestamps so stale or delayed status is not mistaken for a UI defect.",
+    status:
+      "Status maps to the badge/state class: stopped, active, expired, and inactive labels must remain readable without relying on color alone.",
+    action:
+      "Action maps to permissible controls: links only appear when the system can support the member's next step within compliance rules.",
+  };
+
+  function revealTable(tableComponent) {
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        tableComponent.classList.add("is-visible");
+      });
+    });
+  }
+
+  function initStateTables(root) {
+    var scope = root || document;
+    var components = scope.querySelectorAll("[data-state-table]");
+
+    document.documentElement.classList.add("js");
+
+    components.forEach(function (component) {
+      var table = component.querySelector("[data-column-inspection-table]");
+      var caption = component.querySelector("[data-column-inspection-caption]");
+
+      if (!table || !caption) {
+        return;
+      }
+
+      var defaultCaption = table.dataset.defaultCaption || caption.textContent || "";
+      var headers = table.querySelectorAll("th[data-column-key]");
+      var cells = table.querySelectorAll("th[data-column-key], td");
+
+      var setColumn = function (key) {
+        if (!key) {
+          table.removeAttribute("data-active-column");
+          caption.textContent = defaultCaption;
+          return;
+        }
+
+        table.dataset.activeColumn = key;
+        caption.textContent = columnMessages[key] || defaultCaption;
+      };
+
+      headers.forEach(function (header) {
+        header.addEventListener("mouseenter", function () {
+          setColumn(header.dataset.columnKey);
+        });
+        header.addEventListener("focus", function () {
+          setColumn(header.dataset.columnKey);
+        });
+        header.addEventListener("click", function () {
+          setColumn(header.dataset.columnKey);
+        });
+      });
+
+      cells.forEach(function (cell) {
+        cell.addEventListener("mouseenter", function () {
+          var header = headers[cell.cellIndex];
+          setColumn(header && header.dataset.columnKey);
+        });
+        cell.addEventListener("click", function () {
+          var header = headers[cell.cellIndex];
+          setColumn(header && header.dataset.columnKey);
+        });
+      });
+
+      table.addEventListener("mouseleave", function () {
+        setColumn();
+      });
+      table.addEventListener("focusout", function (event) {
+        if (!table.contains(event.relatedTarget)) {
+          setColumn();
+        }
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        component.classList.add("is-visible");
+        return;
+      }
+
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            revealTable(entry.target);
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          rootMargin: "0px 0px -12% 0px",
+          threshold: 0.08,
+        }
+      );
+
+      observer.observe(component);
+    });
+  }
+
+  window.StateInspectionTableV1 = {
+    init: initStateTables,
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      initStateTables(document);
+    });
+  } else {
+    initStateTables(document);
+  }
+})();
+
+</script>

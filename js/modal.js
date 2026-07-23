@@ -296,13 +296,33 @@ export function openCaseStudy(project) {
 
   fetch(project.htmlInclude)
     .then((res) => res.text())
-    .then((html) => {
+    .then(async (html) => {
       const stage = document.querySelector(".layer-3-stage");
       if (!stage) {
         console.warn("Layer 3 stage not found");
         return;
       }
+
+      stage.classList.toggle(
+        "layer-3-stage--full-height",
+        project.layer3Variant === "full-height"
+      );
+
       stage.innerHTML = html;
+
+      const inspectorSlot = stage.querySelector(
+        '[data-module-slot="pattern-inspector"]'
+      );
+
+      if (inspectorSlot) {
+        const { mountPatternInspector } = await import(
+          "../modules/pattern-inspector/pattern-inspector-loader.js"
+        );
+
+        await mountPatternInspector({
+          baseUrl: "./modules/pattern-inspector/",
+        });
+      }
     })
     .catch((err) => {
       console.error("Failed to load case study include:", err);

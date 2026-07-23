@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Standalone State Table</title>
+    <link rel="stylesheet" href="component.css">
+    <script src="component.js" defer></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 4rem 1rem;
+        background: #fbfbfa;
+      }
+    </style>
+  </head>
+  <body>
+    <figure class="c-state-table-v1" data-state-table>
+      <div class="c-state-table-v1__frame" aria-hidden="true">
+        <table
+          class="c-table-mock-v1"
+          data-column-inspection-table
+          data-default-caption="Fig. 1 Lightweight inspection table: hover or tap a column to connect table anatomy to implementation meaning."
+        >
+          <thead>
+            <tr>
+              <th scope="col" data-column-key="app">App name</th>
+              <th scope="col" data-column-key="timestamp">Last update</th>
+              <th scope="col" data-column-key="status">Status</th>
+              <th scope="col" data-column-key="action">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ActiveWell</td>
+              <td>10/02/2026</td>
+              <td><span class="c-table-mock-v1__badge">Stopped</span></td>
+              <td>Details</td>
+            </tr>
+            <tr>
+              <td>Wellness Plus</td>
+              <td>10/02/2026</td>
+              <td><span class="c-table-mock-v1__badge c-table-mock-v1__badge--active">Active</span></td>
+              <td>Stop sharing</td>
+            </tr>
+            <tr>
+              <td>OneRecord</td>
+              <td>10/02/2026</td>
+              <td><span class="c-table-mock-v1__badge c-table-mock-v1__badge--error">Expired</span></td>
+              <td>Details</td>
+            </tr>
+            <tr>
+              <td>Total Wellness</td>
+              <td>10/02/2026</td>
+              <td><span class="c-table-mock-v1__badge c-table-mock-v1__badge--active">Active</span></td>
+              <td>Stop sharing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption class="c-state-table-v1__caption" data-column-inspection-caption>
+        Fig. 1 Lightweight inspection table: hover or tap a column to connect table anatomy to implementation meaning.
+      </figcaption>
+    </figure>
+  </body>
+</html>
