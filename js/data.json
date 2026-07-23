@@ -12,6 +12,7 @@
   "opacity": 0.8,
   "hasCaseStudy": true,
   "htmlInclude": "./includes/projects/designing-with-ai.html",
+  "layer3Variant": "full-height",
   "meta": {
     "type": "AI-Enabled Product Design",
     "client": "Angela Wallace Design",
@@ -33,7 +34,7 @@
     "users": 2000000,
     "complexity": 5,
     "opacity": 1.0,
-    "hasCaseStudy": false,
+    "hasCaseStudy": true,
     "htmlInclude": "./includes/case-studies/fb-payments-experience.html",
     "meta": {
       "type": "Enterprise Platform",

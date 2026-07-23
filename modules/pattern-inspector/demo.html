@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pattern Inspector integration demo.">
+    <title>Pattern Inspector Integration Demo</title>
+    <link rel="stylesheet" href="pattern-inspector.css">
+    <style>
+      body {
+        margin: 0;
+        background: #fbfbfa;
+      }
+
+      .demo-project-slot {
+        width: min(100% - 2rem, 78rem);
+        margin-inline: auto;
+        padding-block: clamp(2rem, 7vw, 4.5rem);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo-project-slot">
+      <div data-module-slot="pattern-inspector">
+        <p>Loading Pattern Inspector…</p>
+      </div>
+    </main>
+
+    <script type="module">
+      import { mountPatternInspector } from "./pattern-inspector-loader.js";
+
+      const slot = document.querySelector('[data-module-slot="pattern-inspector"]');
+      const root = await mountPatternInspector({
+        slot,
+        baseUrl: new URL("./", import.meta.url),
+      });
+
+      if (!root) {
+        slot.textContent = "Pattern Inspector is unavailable.";
+      }
+    </script>
+  </body>
+</html>
+
