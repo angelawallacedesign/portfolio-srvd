@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Refactored image zoom lightbox demo</title>
+  <link rel="stylesheet" href="./image-zoom-lightbox.css">
+  <style>
+    .u-image-lightbox-demo-page {
+      box-sizing: border-box;
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: clamp(1rem, 4vw, 3rem);
+      color: #242424;
+      background: #fff;
+      font: 400 1rem/1.5 system-ui, sans-serif;
+    }
+
+    .u-image-lightbox-demo-heading {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1;
+    }
+
+    .u-image-lightbox-demo-intro {
+      max-width: 45rem;
+      margin: 0 0 2rem;
+    }
+
+    .u-image-lightbox-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+      gap: 1.5rem;
+    }
+
+    .u-image-lightbox-demo-figure {
+      margin: 0;
+    }
+
+    .u-image-lightbox-demo-figure img {
+      width: 100%;
+      border: 1px solid #d8d8d8;
+      border-radius: 0.25rem;
+    }
+
+    .u-image-lightbox-demo-caption {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body class="u-image-lightbox-demo-page">
+  <main>
+    <h1 class="u-image-lightbox-demo-heading">Image lightbox</h1>
+    <p class="u-image-lightbox-demo-intro">
+      Select any thumbnail to view its full-size image. Without JavaScript,
+      each link still opens the full-size image directly.
+    </p>
+
+    <div class="u-image-lightbox-demo-grid">
+      <figure class="u-image-lightbox-demo-figure">
+        <a
+          class="u-image-lightbox-trigger"
+          href="../../assets/work/fb/data-sharing/fb_3rd-party-slide_1.webp"
+          data-lightbox-image
+        >
+          <img
+            src="../../assets/work/fb/data-sharing/fb_3rd-party-slide_1.webp"
+            alt="Initial third-party data sharing design"
+          >
+        </a>
+        <figcaption class="u-image-lightbox-demo-caption">
+          Initial design
+        </figcaption>
+      </figure>
+
+      <figure class="u-image-lightbox-demo-figure">
+        <a
+          class="u-image-lightbox-trigger"
+          href="../../assets/work/fb/data-sharing/fb_3rd-party-slide_3.png"
+          data-lightbox-image
+        >
+          <img
+            src="../../assets/work/fb/data-sharing/fb_3rd-party-slide_3.png"
+            alt="Third-party data sharing content structure"
+          >
+        </a>
+        <figcaption class="u-image-lightbox-demo-caption">
+          Content structure
+        </figcaption>
+      </figure>
+
+      <figure class="u-image-lightbox-demo-figure">
+        <a
+          class="u-image-lightbox-trigger"
+          href="../../assets/work/fb/data-sharing/fb_3rd-party-slide_4.png"
+          data-lightbox-image
+        >
+          <img
+            src="../../assets/work/fb/data-sharing/fb_3rd-party-slide_4.png"
+            alt="Table used as the primary data sharing control"
+          >
+        </a>
+        <figcaption class="u-image-lightbox-demo-caption">
+          Primary control
+        </figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <script src="./image-zoom-lightbox.js"></script>
+</body>
+</html>
