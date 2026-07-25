@@ -445,6 +445,7 @@
   place-items: center;
   border-bottom: var(--border-width-hairline) solid var(--color-border-subtle);
   color: #969694;
+  font: var(--font-family-sans);
   font-size: var(--font-size-00);
   font-weight: var(--font-weight-regular);
   line-height: 1;
@@ -622,3 +623,14 @@
   }
 }
 
+/* This needs to be integrated into the module, was added by designer later (A Wallace 7/24/26 @ 11:03pm) */
+.interaction-callout {
+  margin-bottom: 0;
+  font-size: 0.7rem;
+  padding: 6px 8px;
+  background: var(--color-surface-muted);
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  color: var(--overlay-bg);
+  font-weight: bold;
+}
