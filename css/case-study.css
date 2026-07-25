@@ -610,6 +610,11 @@ body.is-layer-3-open {
     height: 75vh;
   }
 
+  .layer-3-stage.layer-3-stage--full-height {
+    height: 75vh;
+    min-height: 75vh;
+  }
+
   .layer-3 .pattern-reflection p {
     font-family: var(--font-sans);
     font-size: 1.2rem;
@@ -642,6 +647,7 @@ body.is-layer-3-open {
 .layer-3 {
   & main.case-body {
     gap: 50px;
+    padding-inline: 20px;
   }
   & section {
   padding: 0;
