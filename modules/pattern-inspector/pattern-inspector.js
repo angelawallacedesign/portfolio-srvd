@@ -89,10 +89,10 @@ var patterns = [
       '<article class="inspection-pattern button-group" aria-label="Button group pattern">' +
         '<div class="button-group__actions">' +
           '<div class="annotation-target" data-annotation-anchor="primary">' +
-            '<button class="pattern-button pattern-button--primary" type="button">Stop sharing</button>' +
+            '<button class="pattern-button pattern-button--primary" type="button">Primary</button>' +
           '</div>' +
           '<div class="annotation-target" data-annotation-anchor="secondary">' +
-            '<button class="pattern-button pattern-button--quiet" type="button">Details</button>' +
+            '<button class="pattern-button pattern-button--quiet" type="button">Secondary</button>' +
           '</div>' +
         '</div>' +
         '<div class="annotation-target button-group__copy-target" data-annotation-anchor="copy">' +
