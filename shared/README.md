@@ -6,7 +6,7 @@ The canonical browser-consumable shared token file is:
 
 Token ownership:
 
-- Global brand colors, theme aliases, shared frame/surface/text values: `shared/css/global-tokens.css`
+- Global brand colors, theme aliases, shared frame/surface/text values, and theme-specific standard text-link states: `shared/css/global-tokens.css`
 - Product-local typography, spacing, breakpoints, and intro-specific motion tokens: `portfolio-srvd/css/tokens.css`
 - Reusable timing and easing primitives: `shared/css/motion.css`
 

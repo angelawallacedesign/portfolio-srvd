@@ -1,0 +1,116 @@
+<section class="pattern-inspector-v4" data-pattern-inspector-v4>
+  <header class="pi-v4-status" aria-label="Pattern Inspector status bar">
+    <div class="pi-v4-status__identity">
+      <span class="pi-v4-status__signal" aria-hidden="true"></span>
+      <span>Live Prototype</span>
+    </div>
+    <p class="pi-v4-status__message" data-pi-status-message aria-live="polite">Workspace mode</p>
+    <div class="pi-v4-status__view-mode" aria-label="View mode">
+      <span class="pi-v4-status__mode" data-pi-view-mode>Workspace</span>
+      <button class="pi-v4-panel-toggle" type="button" data-pi-panel-control="left" data-pi-controls="navigation" aria-expanded="true">
+        <span aria-hidden="true">☰</span>
+        <span data-pi-control-label>Hide navigation</span>
+      </button>
+      <button class="pi-v4-panel-toggle" type="button" data-pi-panel-control="right" data-pi-controls="inspector" aria-expanded="true">
+        <span aria-hidden="true">◫</span>
+        <span data-pi-control-label>Hide inspector</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="pi-v4-workspace" data-pi-workspace>
+    <aside class="pi-v4-panel pi-v4-panel--navigation" data-pi-left-panel data-pi-id="navigation">
+      <header class="pi-v4-panel__header">
+        <p class="pi-v4-panel__eyebrow">Library</p>
+        <h2 class="pi-v4-panel__title" data-pi-id="navigation-title">Patterns</h2>
+      </header>
+
+      <div class="pi-v4-panel__body">
+        <nav aria-label="Design families and patterns">
+          <button class="pi-v4-family-toggle" type="button" aria-expanded="true" data-pi-family-toggle data-pi-controls="family-marketing-actions">
+            <span>Marketing actions</span>
+            <span aria-hidden="true" data-pi-family-indicator>−</span>
+          </button>
+          <ul class="pi-v4-pattern-list" data-pi-id="family-marketing-actions" data-pi-family-list>
+            <li>
+              <button class="pi-v4-pattern-link is-active" type="button" aria-current="page" data-pi-pattern-option="cta-banner">
+                <span>CTA Banner</span>
+                <span class="pi-v4-pattern-link__version">V4</span>
+              </button>
+            </li>
+            <li><button class="pi-v4-pattern-link" type="button" disabled><span>Status Card</span><span class="pi-v4-pattern-link__version">Pass 3</span></button></li>
+            <li><button class="pi-v4-pattern-link" type="button" disabled><span>Button Group</span><span class="pi-v4-pattern-link__version">Pass 3</span></button></li>
+          </ul>
+        </nav>
+        <p class="pi-v4-panel__note">Pattern switching remains provisional until the structured renderer in Pass 3.</p>
+      </div>
+    </aside>
+
+    <main class="pi-v4-viewer" data-pi-viewer>
+      <header class="pi-v4-viewer__header">
+        <div>
+          <p class="pi-v4-viewer__kicker">Current Pattern</p>
+          <h1 class="pi-v4-viewer__title" data-pi-pattern-name>CTA Banner</h1>
+        </div>
+        <dl class="pi-v4-viewer__metadata" aria-label="Pattern identity">
+          <div><dt>Family</dt><dd data-pi-family-id>marketing-actions</dd></div>
+          <div><dt>Version</dt><dd data-pi-version-id>v4-foundation</dd></div>
+        </dl>
+      </header>
+
+      <figure class="pi-v4-canvas">
+        <div class="pi-v4-stage" data-pi-pattern-stage>
+          <article class="pi-v4-cta-banner" data-pi-rendered-component data-pi-id="component" data-family-id="marketing-actions" data-pattern-id="cta-banner" data-version-id="v4-foundation">
+            <p class="pi-v4-cta-banner__eyebrow">Eyebrow Optional</p>
+            <h2 class="pi-v4-cta-banner__title" data-pi-id="component-title">Here is a headline that<br>spans two lines</h2>
+            <p class="pi-v4-cta-banner__description">Here is a description with two lines max in a sentence case text transform.</p>
+            <div class="pi-v4-cta-banner__actions">
+              <button class="pi-v4-cta-banner__button" type="button">CTA Button</button>
+              <a class="pi-v4-cta-banner__link pi-v4-text-link" href="#" data-pi-demo-link>Text Link</a>
+            </div>
+            <button class="pi-v4-annotation is-active" type="button" data-pi-annotation-id="background" aria-label="Inspect background color" aria-pressed="true">A</button>
+          </article>
+        </div>
+
+        <figcaption class="pi-v4-pattern-navigation">
+          <button type="button" disabled><span aria-hidden="true">&lt;</span> Prev</button>
+          <span>Pattern 1 of 1</span>
+          <button type="button" disabled>Next <span aria-hidden="true">&gt;</span></button>
+        </figcaption>
+      </figure>
+    </main>
+
+    <button class="pi-v4-drawer-backdrop" type="button" tabindex="-1" hidden data-pi-drawer-backdrop aria-label="Close active panel"></button>
+
+    <aside class="pi-v4-panel pi-v4-panel--inspector" data-pi-right-panel data-pi-id="inspector">
+      <header class="pi-v4-panel__header">
+        <p class="pi-v4-panel__eyebrow">Implementation</p>
+        <h2 class="pi-v4-panel__title" data-pi-id="inspector-title">Inspector</h2>
+      </header>
+
+      <div class="pi-v4-panel__body">
+        <div class="pi-v4-tabs" role="tablist" aria-label="Inspection category">
+          <button class="pi-v4-tab is-active" type="button" role="tab" aria-selected="true" tabindex="0" data-pi-tab="token" data-pi-id="tab-token" data-pi-controls="tabpanel">Token</button>
+          <button class="pi-v4-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-pi-tab="state" data-pi-id="tab-state" data-pi-controls="tabpanel">State</button>
+          <button class="pi-v4-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-pi-tab="a11y" data-pi-id="tab-a11y" data-pi-controls="tabpanel">A11y</button>
+          <button class="pi-v4-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-pi-tab="className" data-pi-id="tab-class" data-pi-controls="tabpanel">Class</button>
+        </div>
+
+        <div class="pi-v4-tabpanel" role="tabpanel" data-pi-id="tabpanel" data-pi-tabpanel>
+          <ol class="pi-v4-parts" aria-label="CTA Banner annotations">
+            <li>
+              <button class="pi-v4-part is-active" type="button" aria-pressed="true" data-pi-annotation-id="background">
+                <span class="pi-v4-marker" aria-hidden="true">A</span>
+                <span>Background Color</span>
+              </button>
+            </li>
+          </ol>
+          <section class="pi-v4-detail" aria-live="polite" aria-atomic="true">
+            <p class="pi-v4-detail__label" data-pi-detail-label>Token</p>
+            <h3 class="pi-v4-detail__value" data-pi-detail-value>--theme-surface</h3>
+          </section>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

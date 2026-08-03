@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Standalone Pattern Inspector Version 4 foundation demo.">
+    <title>Pattern Inspector V4 — Foundation Demo</title>
+    <link rel="stylesheet" href="../../../shared/css/global-tokens.css">
+    <link rel="stylesheet" href="pattern-inspector.css">
+  </head>
+  <body class="pi-v4-demo">
+    <main class="pi-v4-demo__main">
+      <div data-pattern-inspector-v4-slot>
+        <p>Loading Pattern Inspector Version 4…</p>
+      </div>
+    </main>
+
+    <script type="module">
+      import { mountPatternInspectorV4 } from "./pattern-inspector.js";
+
+      const slot = document.querySelector("[data-pattern-inspector-v4-slot]");
+      const root = await mountPatternInspectorV4({ slot });
+
+      if (!root) {
+        slot.textContent = "Pattern Inspector Version 4 is unavailable.";
+      }
+    </script>
+  </body>
+</html>
