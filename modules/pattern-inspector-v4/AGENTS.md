@@ -5,7 +5,7 @@ This project uses gated implementation passes.
 Before every pass:
 
 - Read this file.
-- Read `/docs/00-overview.md`.
+- Read `/docs/00-pattern-inspector-v4-overview.md`.
 - Read the current pass instructions.
 - Read the previous pass `PASS_REPORT.md`.
 

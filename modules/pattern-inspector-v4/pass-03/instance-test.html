@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pattern Inspector Version 4 two-instance isolation fixture.">
+    <title>Pattern Inspector V4 — Instance Isolation</title>
+    <link rel="stylesheet" href="../../../shared/css/global-tokens.css">
+    <link rel="stylesheet" href="pattern-inspector.css">
+  </head>
+  <body class="pi-v4-demo">
+    <main class="pi-v4-demo__main pi-v4-instance-fixture">
+      <section aria-labelledby="fixture-a-title">
+        <h1 id="fixture-a-title">Instance A</h1>
+        <div data-pattern-inspector-v4-slot="fixture-a"><p>Loading instance A…</p></div>
+      </section>
+      <section aria-labelledby="fixture-b-title">
+        <h1 id="fixture-b-title">Instance B</h1>
+        <div data-pattern-inspector-v4-slot="fixture-b"><p>Loading instance B…</p></div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { mountPatternInspectorV4 } from "./pattern-inspector.js";
+
+      const [first, second] = document.querySelectorAll("[data-pattern-inspector-v4-slot]");
+      await Promise.all([
+        mountPatternInspectorV4({ slot: first, instanceId: "fixture-a" }),
+        mountPatternInspectorV4({
+          slot: second,
+          instanceId: "fixture-b",
+          patternIdentity: { familyId: "forms", patternId: "form-states", versionId: "v4" },
+        }),
+      ]);
+    </script>
+  </body>
+</html>

@@ -422,11 +422,11 @@ The production demo does not need to display two viewers as a finished feature.
 
 ## Required Pass Report
 
-
 Create `PASS_REPORT.md` inside the current pass folder:
 
 ```text
 /portfolio-srvd/modules/pattern-inspector-v4/pass-03/PASS_REPORT.md
+```
 
 Report:
 
@@ -468,4 +468,4 @@ Wait for human review of:
 - Token decisions
 - Accessibility behavior
 - Comparison readiness
-- Recommendations to weave into, defer from, or remove from the final documentation and validation pass
+- Recommendations to weave into, defer, or remove from the final documentation and validation pass.
