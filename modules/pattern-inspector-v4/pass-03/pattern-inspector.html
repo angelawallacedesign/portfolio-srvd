@@ -1,16 +1,19 @@
 <section class="pattern-inspector-v4" data-pattern-inspector-v4>
+  <!-- UI-1: persistent panel controls occupy opposite header edges. -->
   <header class="pi-v4-status" aria-label="Pattern Inspector status bar">
-    <div class="pi-v4-status__identity">
-      <span class="pi-v4-status__signal" aria-hidden="true"></span>
-      <span>Live Prototype</span>
-    </div>
-    <p class="pi-v4-status__message" data-pi-status-message aria-live="polite">Workspace mode</p>
-    <div class="pi-v4-status__view-mode" aria-label="View mode">
-      <span class="pi-v4-status__mode" data-pi-view-mode>Workspace</span>
+    <div class="pi-v4-status__start">
       <button class="pi-v4-panel-toggle" type="button" data-pi-panel-control="left" data-pi-controls="navigation" aria-expanded="true">
         <span aria-hidden="true">☰</span>
         <span data-pi-control-label>Hide navigation</span>
       </button>
+      <div class="pi-v4-status__identity">
+        <span class="pi-v4-status__signal" aria-hidden="true"></span>
+        <span>Live Prototype</span>
+      </div>
+    </div>
+    <p class="pi-v4-status__message" data-pi-status-message aria-live="polite">Workspace mode</p>
+    <div class="pi-v4-status__end">
+      <span class="pi-v4-status__mode" data-pi-view-mode aria-label="View mode">Workspace</span>
       <button class="pi-v4-panel-toggle" type="button" data-pi-panel-control="right" data-pi-controls="inspector" aria-expanded="true">
         <span aria-hidden="true">◫</span>
         <span data-pi-control-label>Hide inspector</span>
@@ -34,14 +37,20 @@
         <div class="pi-v4-viewer__heading">
           <p class="pi-v4-viewer__kicker">Current Pattern</p>
           <h1 class="pi-v4-viewer__title" data-pi-pattern-name data-pi-id="viewer-title">Pattern</h1>
-          <p class="pi-v4-viewer__description" data-pi-pattern-description></p>
         </div>
-        <dl class="pi-v4-viewer__metadata" aria-label="Pattern implementation metadata">
-          <div><dt>Family</dt><dd data-pi-family-id></dd></div>
-          <div><dt>Version</dt><dd data-pi-version-id></dd></div>
-          <div><dt>Status</dt><dd data-pi-pattern-status></dd></div>
-          <div><dt>Review</dt><dd data-pi-review-state></dd></div>
-        </dl>
+        <!-- IA-1: native progressive disclosure keeps the compact title visible. -->
+        <details class="pi-v4-viewer__disclosure" open data-pi-viewer-disclosure>
+          <summary>Pattern details</summary>
+          <div class="pi-v4-viewer__secondary">
+            <p class="pi-v4-viewer__description" data-pi-pattern-description></p>
+            <dl class="pi-v4-viewer__metadata" aria-label="Pattern implementation metadata">
+              <div><dt>Family</dt><dd data-pi-family-id></dd></div>
+              <div><dt>Version</dt><dd data-pi-version-id></dd></div>
+              <div><dt>Status</dt><dd data-pi-pattern-status></dd></div>
+              <div><dt>Review</dt><dd data-pi-review-state></dd></div>
+            </dl>
+          </div>
+        </details>
       </header>
 
       <figure class="pi-v4-canvas">
@@ -52,6 +61,30 @@
           <button type="button" data-pi-pattern-next>Next <span aria-hidden="true">&gt;</span></button>
         </figcaption>
       </figure>
+
+      <!-- IX-1, IX-2, IX-3, IX-4: one collapsible responsive dock mirrors shared annotation state. -->
+      <section class="pi-v4-responsive-detail" data-pi-responsive-detail hidden aria-label="Selected annotation detail">
+        <button class="pi-v4-responsive-detail__toggle" type="button" data-pi-responsive-detail-toggle data-pi-controls="responsive-detail-panel" aria-expanded="true">
+          <span class="pi-v4-responsive-detail__summary">
+            <span>Selected annotation</span>
+            <strong data-pi-responsive-detail-title aria-live="polite"></strong>
+          </span>
+          <span data-pi-responsive-detail-indicator aria-hidden="true">−</span>
+        </button>
+        <div class="pi-v4-responsive-detail__panel" data-pi-id="responsive-detail-panel" data-pi-responsive-detail-panel>
+          <div class="pi-v4-responsive-tabs" role="tablist" aria-label="Responsive inspection category">
+            <button class="pi-v4-responsive-tab is-active" type="button" role="tab" aria-selected="true" tabindex="0" data-pi-responsive-tab="token" data-pi-id="responsive-tab-token" data-pi-controls="responsive-tabpanel">Token</button>
+            <button class="pi-v4-responsive-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-pi-responsive-tab="state" data-pi-id="responsive-tab-state" data-pi-controls="responsive-tabpanel">State</button>
+            <button class="pi-v4-responsive-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-pi-responsive-tab="accessibility" data-pi-id="responsive-tab-accessibility" data-pi-controls="responsive-tabpanel">A11y</button>
+            <button class="pi-v4-responsive-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-pi-responsive-tab="className" data-pi-id="responsive-tab-class" data-pi-controls="responsive-tabpanel">Class</button>
+          </div>
+          <div class="pi-v4-responsive-detail__content" role="tabpanel" data-pi-id="responsive-tabpanel" data-pi-responsive-tabpanel aria-live="polite" aria-atomic="true">
+            <p class="pi-v4-detail__label" data-pi-responsive-detail-label>Token</p>
+            <p class="pi-v4-detail__value" data-pi-responsive-detail-value></p>
+            <p class="pi-v4-detail__description" data-pi-responsive-detail-description></p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <button class="pi-v4-drawer-backdrop" type="button" tabindex="-1" hidden data-pi-drawer-backdrop aria-label="Close active panel"></button>

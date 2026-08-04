@@ -58,7 +58,7 @@ The only remaining HTML-string parse is the trusted static workspace template fe
 
 Each mount accepts a sanitized caller ID or creates a UUID-prefixed ID with a timestamp/random fallback. The prefix scopes all static and dynamic DOM IDs and ARIA relationships. Pattern identity (`familyId:patternId:versionId`), viewer instance identity, and annotation identity remain separate.
 
-Every query used by renderers and controllers is rooted in its own Pattern Inspector. The comparison fixture mounted `fixture-a` and `fixture-b`, produced 60 IDs with zero duplicates, and confirmed that selecting Text Link in Instance A left Instance B on Form States / Default Field.
+Every query used by renderers and controllers is rooted in its own Pattern Inspector. The updated comparison fixture mounted `fixture-a` and `fixture-b`, produced 72 IDs with zero duplicates, and confirmed that selecting Text Link in Instance A left Instance B on Form States / Default Field. Responsive dock tab and panel relationships use the same instance prefix.
 
 ## Responsive annotation strategy
 
@@ -73,6 +73,26 @@ One `annotationId` is the persistent selection source for marker, component targ
 Marker-to-inspector and inspector-to-marker selection were verified in the browser. Hover, focus, and selected states use distinct outlines and surfaces; selected rows additionally render the text cue `Selected`.
 
 Active pattern, inspector tab, and annotation selection remain independent from panel visibility. Layout-state changes do not rebuild the current component.
+
+## Approved Pass 3 follow-up feedback
+
+Identifiers are preserved below and in the implementation comments.
+
+| Identifier | Disposition | Implementation and validation evidence |
+| --- | --- | --- |
+| `VQA-1` | Implemented in Pass 3 | Selected component targets now use `--color-control`; computed browser color matched the global control token. |
+| `VQA-2` | Implemented in Pass 3 | Compact viewer metadata uses `justify-content: flex-start`; verified at 560 px. |
+| `UI-1` | Implemented in Pass 3 | Navigation and inspector controls occupy the left and right header edges; measured offsets were symmetrical at 17 px. |
+| `IX-1` | Implemented in Pass 3 | Responsive detail is a sticky bottom row within the viewer, not a browser-native tooltip. |
+| `IX-2` | Implemented in Pass 3 | The dock remains present in responsive mode, exposes `aria-expanded`, retains the selected label when collapsed, and preserves selection. |
+| `IX-3` | Implemented in Pass 3 | Responsive inspector tabs and `.pi-v4-detail` are hidden; the drawer retains the annotation list and focuses its selected row. Category and detail controls live in the dock. |
+| `IX-4` | Implemented in Pass 3 | Selecting a stage marker updates dock label, category value, description, marker, target, and inspector row from the same `annotationId`. |
+| `UI-2` | Implemented in Pass 3 | The inspector control is hidden at `max-width: 42rem`. Crossing that breakpoint closes an open inspector drawer and moves focus to the dock toggle. |
+| `IA-1` | Implemented in Pass 3 | Native `<details>` keeps the title visible and collapses description/metadata on compact entry; leaving compact mode restores the expanded desktop header. |
+| `IA-2` | Deferred | Status hierarchy, terminology, and indicator mapping remain unchanged pending future design alignment. |
+| `ENG-1` | Deferred | No keyboard shortcut was assigned. Engineering review remains required before any shortcut implementation. |
+
+Feedback-label definitions, expected use, preservation rules, and reviewer ownership remain deferred to the final documentation pass as approved.
 
 ## Shared tokens reused
 
@@ -115,6 +135,8 @@ These aliases remain explicit at the component root and are not hidden in arbitr
 - Focus is visibly styled; target highlight states differ by line style and selected rows include a text cue.
 - Polite live regions announce workspace-mode and inspector-detail changes without adding global announcements.
 - Responsive drawers retain inert background content, modal dialog semantics, focus entry/containment, Escape and backdrop dismissal, and focus restoration.
+- Responsive detail uses an instance-safe tablist, roving tab index, `aria-expanded` collapse control, persistent selected-label summary, and shared selection state.
+- Compact secondary viewer information uses native disclosure semantics and remains collapsed by default while the pattern title stays visible.
 - Reduced-motion rules collapse transition duration and remove drawer transitions.
 
 ## Comparison readiness
@@ -156,10 +178,15 @@ Real-browser validation confirmed:
 - Desktop panel combinations and derived presentation mode.
 - Pattern, tab, and annotation persistence through panel visibility changes.
 - Responsive drawer opening, inertness, focus entry, Escape dismissal, and focus restoration.
+- Responsive inspector focus entry on the selected annotation row with duplicate detail/category controls hidden.
+- Bottom-dock expansion/collapse, persistent selected label, stage-to-dock synchronization, and responsive category keyboard behavior.
+- Compact inspector-control removal with focus recovery when crossing 42rem from an open inspector drawer.
+- Native compact header disclosure, default-collapsed secondary information, and start-aligned disclosed metadata.
 - Attached annotation markers through responsive component reflow.
 - One-column Form States layout without horizontal document overflow at 560 px.
 - Instance-prefixed component and tab relationships.
 - Two mounted fixtures with zero duplicate IDs and independent state.
+- Two responsive docks with unique tab/panel IDs and isolated selected-detail state.
 
 ## Known limitations
 
@@ -182,6 +209,9 @@ Real-browser validation confirmed:
 ### Defer
 
 - Promote selection, text hierarchy, typography, or spacing aliases globally only after evidence of reuse outside Pattern Inspector.
+- `IA-2`: status hierarchy and non-color status indicator pending future design alignment.
+- `ENG-1`: keyboard-shortcut assignment pending explicit engineering review and approval.
+- Final feedback-label definitions, usage rules, identifier-preservation guidance, and reviewer ownership until the final documentation pass.
 
 ### Remove from scope
 

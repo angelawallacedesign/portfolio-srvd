@@ -58,6 +58,8 @@ One annotation record drives its component marker, inspector row, active detail,
 
 Pattern identity, viewer instance identity, and annotation identity remain separate. The state closure stores the active family/pattern/version, inspector tab, selected/hovered/focused annotation, desktop panel preferences, responsive drawer, and breakpoint mode. Presentation mode remains strictly derived from desktop panel state.
 
+At `max-width: 68rem`, the selected annotation detail moves to a bottom-docked region driven by the same annotation and active-category state. The dock remains present while responsive, can be collapsed without clearing selection, and keeps the selected annotation label visible in its compact header. Its Token, State, A11y, and Class tabs preserve category access even when the inspector drawer is unavailable.
+
 Selecting a new pattern resets selection to that pattern's first annotation and resets the inspector category to Token. Previous and Next use the same rule. Panel visibility does not reset the active pattern, tab, or annotation.
 
 ## Instance identity
@@ -82,14 +84,35 @@ Marker and inspector-row events update one persistent `annotationId`. Hover and 
 ## Workspace and accessibility
 
 - Desktop navigation and inspector panels remain independently closable.
-- Persistent reopen controls remain outside panels that can be hidden or inert.
+- Persistent reopen controls remain outside panels that can be hidden or inert and occupy the left and right edges of the workspace header.
 - Below `68rem`, mutually exclusive drawers use inert background regions, dialog semantics, focus entry and containment, Escape/backdrop dismissal, and focus restoration.
+- In responsive mode, the inspector drawer contains annotation navigation while the bottom dock contains the non-duplicated category and detail interface.
+- At `42rem` and below, the inspector control is hidden; stage markers and the bottom dock retain annotation and category access.
+- At `42rem` and below, a native Pattern details disclosure keeps the title visible while hiding description and metadata by default.
 - Breakpoint transitions preserve desktop preferences and begin responsive mode with no open drawer.
 - Token, State, A11y, and Class use native buttons with tablist semantics, roving tab index, arrow/Home/End keyboard behavior, and instance-prefixed relationships.
 - Markers and inspector rows are native buttons with descriptive accessible names and `aria-pressed` selection state.
 - The viewer component and inspector detail provide useful programmatic labels; status and detail updates use polite live regions.
 - Native headings, links, form labels, `aria-invalid`, and disabled input semantics are retained by component renderers.
 - Focus is visible and reduced-motion preferences remove panel and marker transition duration.
+
+## Approved follow-up traceability
+
+| Identifier | Pass 3 disposition |
+| --- | --- |
+| `VQA-1` | Implemented: selected target outlines use `--color-control`. |
+| `VQA-2` | Implemented: compact metadata aligns with `justify-content: flex-start`. |
+| `UI-1` | Implemented: navigation and inspector controls occupy opposite header edges. |
+| `IX-1` | Implemented: responsive annotation detail is bottom-docked. |
+| `IX-2` | Implemented: the dock is persistent and collapsible. |
+| `IX-3` | Implemented: responsive inspector detail/category duplication is hidden while annotation navigation remains. |
+| `IX-4` | Implemented: stage selections update the dock label and contextual detail from shared state. |
+| `UI-2` | Implemented: the inspector control is hidden at `max-width: 42rem`; dock controls preserve access. |
+| `IA-1` | Implemented: native disclosure hides description and metadata by default at `max-width: 42rem`. |
+| `IA-2` | Deferred as approved; status hierarchy and indicator remain unchanged. |
+| `ENG-1` | Deferred as approved; no keyboard shortcut was assigned. |
+
+The final feedback-label governance documentation remains deferred to the final pass.
 
 ## Token strategy
 

@@ -292,18 +292,27 @@ export function renderInspectorDetail(context) {
   root.querySelector("[data-pi-detail-title]").textContent = annotation?.title || "No annotation selected";
   root.querySelector("[data-pi-detail-value]").textContent = value;
   root.querySelector("[data-pi-detail-description]").textContent = annotation?.description || "";
+  // IX-4: the stage, inspector, and responsive dock project the same selected annotation.
+  root.querySelector("[data-pi-responsive-detail-title]").textContent = annotation?.title || "No annotation selected";
+  root.querySelector("[data-pi-responsive-detail-label]").textContent = CATEGORY_LABELS[state.activeInspectorTab];
+  root.querySelector("[data-pi-responsive-detail-value]").textContent = value;
+  root.querySelector("[data-pi-responsive-detail-description]").textContent = annotation?.description || "";
 }
 
 export function renderInspectorTabs(context) {
   const { root, state } = context;
-  const tabs = root.querySelectorAll("[data-pi-tab]");
+  const tabs = root.querySelectorAll("[data-pi-tab], [data-pi-responsive-tab]");
   const tabPanel = root.querySelector("[data-pi-tabpanel]");
+  const responsiveTabPanel = root.querySelector("[data-pi-responsive-tabpanel]");
   tabs.forEach((tab) => {
-    const active = tab.dataset.piTab === state.activeInspectorTab;
+    const category = tab.dataset.piTab || tab.dataset.piResponsiveTab;
+    const active = category === state.activeInspectorTab;
     tab.classList.toggle("is-active", active);
     tab.setAttribute("aria-selected", String(active));
     tab.tabIndex = active ? 0 : -1;
-    if (active) tabPanel.setAttribute("aria-labelledby", tab.id);
+    if (!active) return;
+    if (tab.dataset.piTab) tabPanel.setAttribute("aria-labelledby", tab.id);
+    else responsiveTabPanel.setAttribute("aria-labelledby", tab.id);
   });
 }
 

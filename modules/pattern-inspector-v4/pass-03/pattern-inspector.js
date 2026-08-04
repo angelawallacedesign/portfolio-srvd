@@ -12,6 +12,7 @@ import {
 } from "./pattern-inspector-renderers.js";
 
 const RESPONSIVE_MEDIA_QUERY = "(max-width: 68rem)";
+const COMPACT_MEDIA_QUERY = "(max-width: 42rem)";
 const FOCUSABLE_SELECTOR = [
   "a[href]",
   "button:not([disabled])",
@@ -90,7 +91,7 @@ function findPattern(records, identity) {
   ) || records[0];
 }
 
-function createWorkspaceState(pattern, isResponsive) {
+function createWorkspaceState(pattern, isResponsive, isCompact) {
   const state = {
     familyId: pattern.familyId,
     patternId: pattern.patternId,
@@ -103,6 +104,8 @@ function createWorkspaceState(pattern, isResponsive) {
     rightPanelOpen: true,
     activeResponsiveDrawer: null,
     isResponsive,
+    isCompact,
+    responsiveDetailExpanded: true,
   };
   Object.defineProperty(state, "presentationMode", {
     enumerable: true,
@@ -128,10 +131,11 @@ function instantiateRelationships(root, instanceId) {
   root.querySelector("[data-pi-right-panel]").setAttribute("aria-labelledby", idMap.get("inspector-title"));
   root.querySelector("[data-pi-viewer]").setAttribute("aria-labelledby", idMap.get("viewer-title"));
   root.querySelector("[data-pi-tabpanel]").setAttribute("aria-labelledby", idMap.get("tab-token"));
+  root.querySelector("[data-pi-responsive-tabpanel]").setAttribute("aria-labelledby", idMap.get("responsive-tab-token"));
   return idMap;
 }
 
-function initializePanelControls(root, state, mediaQuery) {
+function initializePanelControls(root, state, mediaQuery, compactMediaQuery) {
   const controls = {
     left: root.querySelector('[data-pi-panel-control="left"]'),
     right: root.querySelector('[data-pi-panel-control="right"]'),
@@ -145,15 +149,20 @@ function initializePanelControls(root, state, mediaQuery) {
   const viewMode = root.querySelector("[data-pi-view-mode]");
   const viewer = root.querySelector("[data-pi-viewer]");
   const backdrop = root.querySelector("[data-pi-drawer-backdrop]");
+  const responsiveDetail = root.querySelector("[data-pi-responsive-detail]");
+  const responsiveDetailToggle = root.querySelector("[data-pi-responsive-detail-toggle]");
+  const responsiveDetailPanel = root.querySelector("[data-pi-responsive-detail-panel]");
+  const responsiveDetailIndicator = root.querySelector("[data-pi-responsive-detail-indicator]");
   let drawerOpener = null;
 
   const panelIsOpen = (side) => side === "left" ? state.leftPanelOpen : state.rightPanelOpen;
+  const setInert = (node, inert) => node.toggleAttribute("inert", inert);
   const setPanelOpen = (side, open) => {
     if (side === "left") state.leftPanelOpen = open;
     else state.rightPanelOpen = open;
   };
   const focusableElements = (panel) => Array.from(panel.querySelectorAll(FOCUSABLE_SELECTOR)).filter((node) =>
-    !node.disabled && !node.closest("[hidden]")
+    !node.disabled && !node.closest("[hidden]") && node.getClientRects().length > 0
   );
 
   function renderWorkspaceState() {
@@ -163,11 +172,20 @@ function initializePanelControls(root, state, mediaQuery) {
     root.dataset.piRightState = state.rightPanelOpen ? "open" : "closed";
     root.dataset.piActiveDrawer = activeDrawer || "none";
     root.dataset.piPresentation = String(state.presentationMode);
+    root.dataset.piCompact = String(state.isCompact);
+
+    // UI-2: compact layouts rely on the dock and do not expose the inspector drawer control.
+    controls.right.hidden = state.isCompact;
+    // IX-1 and IX-2: the dock is responsive-only, persistent, and independently collapsible.
+    responsiveDetail.hidden = !state.isResponsive;
+    responsiveDetailToggle.setAttribute("aria-expanded", String(state.responsiveDetailExpanded));
+    responsiveDetailPanel.hidden = !state.responsiveDetailExpanded;
+    responsiveDetailIndicator.textContent = state.responsiveDetailExpanded ? "−" : "+";
 
     Object.entries(panels).forEach(([side, panel]) => {
       const visible = state.isResponsive ? activeDrawer === side : panelIsOpen(side);
       panel.hidden = !state.isResponsive && !visible;
-      panel.inert = state.isResponsive ? !visible : false;
+      setInert(panel, state.isResponsive ? !visible : false);
       panel.setAttribute("aria-hidden", String(!visible));
       if (state.isResponsive && visible) {
         panel.setAttribute("role", "dialog");
@@ -186,10 +204,10 @@ function initializePanelControls(root, state, mediaQuery) {
     });
 
     const drawerOpen = Boolean(activeDrawer);
-    status.inert = drawerOpen;
-    viewer.inert = drawerOpen;
+    setInert(status, drawerOpen);
+    setInert(viewer, drawerOpen);
     backdrop.hidden = !drawerOpen;
-    backdrop.inert = !drawerOpen;
+    setInert(backdrop, !drawerOpen);
     if (state.isResponsive) {
       viewMode.textContent = activeDrawer ? `${activeDrawer === "left" ? "Navigation" : "Inspector"} drawer` : "Responsive";
       statusMessage.textContent = activeDrawer ? `${activeDrawer === "left" ? "Navigation" : "Inspector"} panel open` : "Responsive workspace";
@@ -204,8 +222,8 @@ function initializePanelControls(root, state, mediaQuery) {
 
   function focusDrawer(side) {
     const panel = panels[side];
-    const selectedTab = side === "right" ? panel.querySelector('[role="tab"][aria-selected="true"]') : null;
-    const target = selectedTab || focusableElements(panel)[0] || panel;
+    const selectedRow = side === "right" ? panel.querySelector("[data-pi-inspector-row].is-selected") : null;
+    const target = selectedRow || focusableElements(panel)[0] || panel;
     root.ownerDocument.defaultView.requestAnimationFrame(() => target.focus());
   }
 
@@ -218,6 +236,7 @@ function initializePanelControls(root, state, mediaQuery) {
   }
 
   function openDrawer(side, opener) {
+    if (side === "right" && state.isCompact) return;
     state.activeResponsiveDrawer = side;
     drawerOpener = opener;
     renderWorkspaceState();
@@ -235,6 +254,10 @@ function initializePanelControls(root, state, mediaQuery) {
   }
 
   Object.entries(controls).forEach(([side, control]) => control.addEventListener("click", () => togglePanel(side)));
+  responsiveDetailToggle.addEventListener("click", () => {
+    state.responsiveDetailExpanded = !state.responsiveDetailExpanded;
+    renderWorkspaceState();
+  });
   backdrop.addEventListener("click", () => closeDrawer());
   root.addEventListener("keydown", (event) => {
     const side = state.activeResponsiveDrawer;
@@ -271,34 +294,64 @@ function initializePanelControls(root, state, mediaQuery) {
       renderWorkspaceState();
     }
   };
+  const handleCompactChange = (event) => {
+    const rightDrawerWasOpen = state.activeResponsiveDrawer === "right";
+    const rightControlHadFocus = root.ownerDocument.activeElement === controls.right;
+    state.isCompact = event.matches;
+    if (state.isCompact && rightDrawerWasOpen) {
+      state.activeResponsiveDrawer = null;
+      drawerOpener = null;
+    }
+    renderWorkspaceState();
+    if (state.isCompact && (rightDrawerWasOpen || rightControlHadFocus)) responsiveDetailToggle.focus();
+  };
   if (typeof mediaQuery.addEventListener === "function") mediaQuery.addEventListener("change", handleBreakpointChange);
   else mediaQuery.addListener(handleBreakpointChange);
+  if (typeof compactMediaQuery.addEventListener === "function") compactMediaQuery.addEventListener("change", handleCompactChange);
+  else compactMediaQuery.addListener(handleCompactChange);
   renderWorkspaceState();
   return Object.freeze({ closeDrawer, render: renderWorkspaceState, togglePanel });
 }
 
 function initializeInspectorTabs(context) {
   const { root, state } = context;
-  const tabs = Array.from(root.querySelectorAll("[data-pi-tab]"));
+  const tabGroups = [
+    Array.from(root.querySelectorAll("[data-pi-tab]")),
+    Array.from(root.querySelectorAll("[data-pi-responsive-tab]")),
+  ];
   const selectTab = (tab, moveFocus = false) => {
-    state.activeInspectorTab = tab.dataset.piTab;
+    state.activeInspectorTab = tab.dataset.piTab || tab.dataset.piResponsiveTab;
     renderInspectorTabs(context);
     renderInspectorDetail(context);
     if (moveFocus) tab.focus();
   };
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => selectTab(tab));
-    tab.addEventListener("keydown", (event) => {
-      let nextIndex = index;
-      if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
-      else if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
-      else if (event.key === "Home") nextIndex = 0;
-      else if (event.key === "End") nextIndex = tabs.length - 1;
-      else return;
-      event.preventDefault();
-      selectTab(tabs[nextIndex], true);
+  tabGroups.forEach((tabs) => {
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => selectTab(tab));
+      tab.addEventListener("keydown", (event) => {
+        let nextIndex = index;
+        if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+        else if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === "Home") nextIndex = 0;
+        else if (event.key === "End") nextIndex = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        selectTab(tabs[nextIndex], true);
+      });
     });
   });
+}
+
+function initializeViewerDisclosure(root, compactMediaQuery) {
+  // IA-1: compact entry closes secondary header information; desktop restores it.
+  const disclosure = root.querySelector("[data-pi-viewer-disclosure]");
+  const applyBreakpointPolicy = (isCompact) => {
+    disclosure.open = !isCompact;
+  };
+  const handleCompactChange = (event) => applyBreakpointPolicy(event.matches);
+  if (typeof compactMediaQuery.addEventListener === "function") compactMediaQuery.addEventListener("change", handleCompactChange);
+  else compactMediaQuery.addListener(handleCompactChange);
+  applyBreakpointPolicy(compactMediaQuery.matches);
 }
 
 function renderPatternSelection(context, { focusNavigation = false } = {}) {
@@ -402,7 +455,8 @@ export function initializeWorkspace(root, options = {}) {
   const instanceId = createInstanceId(options.instanceId);
   const idMap = instantiateRelationships(root, instanceId);
   const mediaQuery = root.ownerDocument.defaultView.matchMedia(RESPONSIVE_MEDIA_QUERY);
-  const state = createWorkspaceState(initialPattern, mediaQuery.matches);
+  const compactMediaQuery = root.ownerDocument.defaultView.matchMedia(COMPACT_MEDIA_QUERY);
+  const state = createWorkspaceState(initialPattern, mediaQuery.matches, compactMediaQuery.matches);
   const context = {
     document: root.ownerDocument,
     root,
@@ -420,7 +474,8 @@ export function initializeWorkspace(root, options = {}) {
   initializeInspectorTabs(context);
   initializePatternNavigation(context);
   initializeAnnotationSynchronization(context);
-  const workspaceController = initializePanelControls(root, state, mediaQuery);
+  initializeViewerDisclosure(root, compactMediaQuery);
+  const workspaceController = initializePanelControls(root, state, mediaQuery, compactMediaQuery);
 
   root.dataset.piInitialized = "true";
   root.patternInspectorV4 = Object.freeze({ instanceId, state, workspaceController });
