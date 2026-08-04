@@ -1,0 +1,11 @@
+## Future Review and QA Workflow
+
+- Move pattern family context into the navigation hierarchy rather than repeating it in the viewer header.
+- Show the live UI-kit version separately from the version currently under review.
+- Define an explicit lifecycle for not started, in progress, ready for review, approved, and production.
+- Pair status colors with text labels; do not communicate status through color alone.
+- Add a permission-based Review Mode toggle to the inspector.
+- Add a separate discipline-mode selector for content, interaction, visual design, and engineering perspectives.
+- Investigate focused review behavior that emphasizes the selected annotation without making surrounding content inaccessible.
+- Explore using the inspector for both pre-development design review and post-implementation visual QA.
+- Treat implementation QA, stakeholder approval, mock user states, and production readiness as future product capabilities rather than current Pass 3 scope.

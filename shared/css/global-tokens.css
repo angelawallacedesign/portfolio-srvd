@@ -33,6 +33,10 @@
     --color-text: #111;
     --color-text-contrast: #fff;
     --color-text-muted: #C3C3C3;
+    --color-text-link: #511185;
+    --color-text-link-hover: #6F168F;
+    --color-text-link-visited: #66348B;
+    --color-text-link-focus: #8A104F;
 
     /* icons */
     --color-icon: #565656;
@@ -60,6 +64,10 @@ html[data-theme="dark"] {
     --color-text: #f7f4f5;
     --color-text-contrast: #111;
     --color-text-muted: #a9a4a7;
+    --color-text-link: #8FDCF4;
+    --color-text-link-hover: #B9ECFB;
+    --color-text-link-visited: #CFB2F4;
+    --color-text-link-focus: #FF9FBD;
     --color-icon: #dedade;
 
     --theme-bg: #17171a;
@@ -81,6 +89,10 @@ html[data-theme="night"] {
     --color-text: #f1f6ff;
     --color-text-contrast: #07101e;
     --color-text-muted: #9ca8c0;
+    --color-text-link: #8EC5FF;
+    --color-text-link-hover: #C7E2FF;
+    --color-text-link-visited: #C7B5FF;
+    --color-text-link-focus: #FF94B4;
     --color-icon: #d9e4f8;
 
     --theme-bg: #0c111d;
