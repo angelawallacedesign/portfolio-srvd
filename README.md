@@ -18,13 +18,15 @@ One of the hardest problems was maintaining continuity. Initial output is easy. 
 
 This portfolio is the result of solving that challenge.
 
-## Pattern Inspector
+## Design Inspector
 
-One of the largest experiments in this repository is the Pattern Inspector.
+One of the largest experiments in this repository is the Design Inspector.
 
 It transforms interface components into inspectable design artifacts, exposing implementation details including design tokens, states, CSS classes, accessibility considerations, annotations, and documentation alongside the live interface.
 
 The goal is to reduce ambiguity between design and engineering by making implementation decisions visible instead of hidden behind static mockups.
+
+This work is ongoing.  The portfolio shows a stable initial prototype while the product is being developed.
 
 ## Portfolio Architecture
 
