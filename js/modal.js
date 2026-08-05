@@ -7,6 +7,7 @@ import { renderOverlayPanel } from "./components.js";
 import { positionOverlayPanel } from "./chart.js";
 let overlayTriangle = null;
 let modalOpenRunId = 0;
+let activeLayer3ProjectId = null;
 
 function nextFrame() {
   return new Promise(resolve => requestAnimationFrame(resolve));
@@ -162,15 +163,6 @@ export function openModal(data) {
   const panelEl = document.querySelector(".overlay__panel");
   panelEl.style.opacity = "0";
   
-  const caseStudyBtn = modalRoot.querySelector("[data-open-case-study]");
-
-  if (caseStudyBtn) {
-    caseStudyBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      openCaseStudy(data);
-    });
-  }
-
   const rail = document.getElementById("content-rail");
   if (rail) {
     rail.setAttribute("data-locked", "true");
@@ -268,6 +260,38 @@ async function prepareOverlayGeometry({
 // LAYER 3 — CASE STUDY OVERLAY
 // ======================================================
 
+function onLayer3CloseClick() {
+  closeCaseStudy();
+}
+
+function onLayer3Escape(e) {
+  if (e.key !== "Escape") return;
+  e.stopPropagation();
+  closeCaseStudy();
+}
+
+export function closeCaseStudy({ notify = true } = {}) {
+  const layer3 = document.getElementById("layer-3-overlay");
+  if (!layer3?.classList.contains("is-open")) return;
+
+  const closedProjectId = activeLayer3ProjectId;
+  const closeBtn = document.getElementById("layer-3-close");
+
+  layer3.classList.remove("is-open");
+  layer3.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("is-layer-3-open");
+  document.removeEventListener("keydown", onLayer3Escape);
+  closeBtn?.removeEventListener("click", onLayer3CloseClick);
+  activeLayer3ProjectId = null;
+
+  if (notify && closedProjectId) {
+    document.dispatchEvent(
+      new CustomEvent("layer3:closed", {
+        detail: { projectId: closedProjectId },
+      })
+    );
+  }
+}
 
 export function openCaseStudy(project) {
   const layer3 = document.getElementById("layer-3-overlay");
@@ -286,6 +310,7 @@ export function openCaseStudy(project) {
   layer3.classList.add("is-open");
   layer3.setAttribute("aria-hidden", "false");
   document.body.classList.add("is-layer-3-open");
+  activeLayer3ProjectId = project.id;
 
   console.log("Layer 3 opened for:", project.id);
 
@@ -297,6 +322,8 @@ export function openCaseStudy(project) {
   fetch(project.htmlInclude)
     .then((res) => res.text())
     .then(async (html) => {
+      if (activeLayer3ProjectId !== project.id) return;
+
       const stage = document.querySelector(".layer-3-stage");
       if (!stage) {
         console.warn("Layer 3 stage not found");
@@ -328,24 +355,13 @@ export function openCaseStudy(project) {
       console.error("Failed to load case study include:", err);
     });
 
-  function closeLayer3() {
-    layer3.classList.remove("is-open");
-    layer3.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("is-layer-3-open");
-    document.removeEventListener("keydown", onEscape);
-  }
-
-  function onEscape(e) {
-    if (e.key !== "Escape") return;
-    e.stopPropagation();
-    closeLayer3();
-  }
-
   if (closeBtn) {
-    closeBtn.addEventListener("click", closeLayer3, { once: true });
+    closeBtn.removeEventListener("click", onLayer3CloseClick);
+    closeBtn.addEventListener("click", onLayer3CloseClick);
   }
 
-  document.addEventListener("keydown", onEscape);
+  document.removeEventListener("keydown", onLayer3Escape);
+  document.addEventListener("keydown", onLayer3Escape);
 }
 
 

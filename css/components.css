@@ -168,6 +168,15 @@ a.is-active {
   gap: 10px;
 }
 
+.global-header.sub-nav {
+    background-color: #f2f2f2;
+    top: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #8D8D8D;
+    height: auto;
+}
+
 .designer-name {
   display: flex;
   flex-direction: column;

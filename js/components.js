@@ -39,6 +39,7 @@ export function renderOverlayPanel(data) {
               ? `
                 <div>
                   <a 
+                    href="?project=${encodeURIComponent(data.id)}"
                     data-open-case-study="true"
                     data-project-id="${data.id}"
                     class="primary-btn-small"
@@ -88,6 +89,7 @@ export function renderProjectCard(data) {
         ? `
         <div class="project-card-actions">
           <a
+            href="?project=${encodeURIComponent(data.id)}"
             data-open-case-study="true"
             data-project-id="${data.id}"
             class="primary-btn-small"
