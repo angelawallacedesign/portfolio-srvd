@@ -84,6 +84,7 @@ a.is-active {
     display: inline-block;
     width: 180px;
     text-align: center;
+    text-decoration:none;
 }
 
 .primary-btn-small:hover {
