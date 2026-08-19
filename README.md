@@ -28,6 +28,10 @@ The goal is to reduce ambiguity between design and engineering by making impleme
 
 This work is ongoing.  The portfolio shows a stable initial prototype while the product is being developed.
 
+## Chart Project View
+
+This was my first ambitious attempt to merge data visualization, animation, and immutable data sources into a scalable format that automatically adds projects to the list, updates the chart, and displays only the relevant information I choose, through a JSON file.  But to make that happen, there are multiple scripts, CSS, and HTML working in orchestration as the structure to be able to control a visual element on the screen using one file.  It was frustrating, maddening, and exhilirating all at the same time.  It was my first deep dive into paired programming with an agent as an engineering partner.  I didn't accept everything.  I watched every build.  I got upset at it, I learned hallucinations, and ultimately three months later, just how tight constraints really need to be.  I also learned about coupling, finally setting up my personal git workflow, regularly committing, creating branches, and high-fiving myself after reviewing my own pull requests :)
+
 ## Portfolio Architecture
 
 The site itself follows a layered presentation system.
