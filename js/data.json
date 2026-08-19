@@ -18,7 +18,7 @@
     "client": "Angela Wallace Design",
     "role": "AI-Enabled Product Designer",
     "disciplines": "Product Strategy, Visual Design, Interaction Design, AI-Assisted Discovery, Front-End Prototyping, Technical Documentation",
-    "notes": "A human-directed AI workflow for taking digital products from early sketches to refined interfaces, working HTML, CSS, and JavaScript prototypes, and developer-ready specifications. Using AI as a design and engineering partner, I direct discovery, evaluate recommendations, refine interactions, review code, document decisions, and maintain ownership of the final product experience.",
+    "notes": "Using AI as a design and engineering partner, I create AI workflows that take digital products from early sketches to refined interfaces to coded prototypes. I direct discovery, evaluate recommendations, refine interactions, review code, document decisions, and maintain ownership of the final product experience.",
     "caption": "Above: Design Inspector, a working product developed through an AI-assisted design and paired-programming workflow",
     "imageUrl": "./assets/work/awd/design-inspector/ai-assisted-inspector_hero-dark_thumb2.webp"
   }
@@ -41,7 +41,7 @@
       "client": "Florida Blue",
       "role": "Visual designer",
       "disciplines": "Design system pattern contribution, Cross-functional agile teams, WCAG accessibility",
-      "notes": "Led production-ready visual and UI design across web, mobile apps, and AI chat experiences in a highly regulated healthcare environment. Designed and maintained WCAG 2.1–compliant components, layouts, and visual systems supporting marketing, product, and communications initiatives. Partnered cross-functionally with UX, Product, Engineering, Content, and Marketing to deliver dev-ready designs with minimal oversight, balancing accessibility, brand integrity, and speed at enterprise scale.",
+      "notes": "Designed and shipped an improved digital payments experience with cross-functional teams. Created user flows with reusable design system components. Worked closely to gather requirements with product and engineering, integrating stakeholder decisions which increased payment conversions by 30%.",
       "caption": "Above: Florida Blue Mobile App",
       "imageUrl": "./assets/work/fb/fb-payments_thumb.jpg"
     }
@@ -64,7 +64,7 @@
       "client": "Florida Blue",
       "role": "Visual Designer",
       "disciplines": "PHI regulations, Legal compliance, Agile teams",
-      "notes": "Highly regulated data-sharing control interface for sensitive information",
+      "notes": "Designed and delivered data and privacy experiences with cross-functional teams across Florida Blue’s digital ecosystem. Translated complex privacy requirements into clear user flows and accessible interfaces, collaborated with product and engineering on implementation, and validated experiences against design system and WCAG standards.",
       "caption": "Above: Data-sharing table",
       "imageUrl": "./assets/work/fb/data-sharing/data-sharing-table_thumb.png"
     }

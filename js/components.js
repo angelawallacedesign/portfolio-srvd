@@ -75,11 +75,8 @@ export function renderProjectCard(data) {
       </h2>
 
       <dl class="project-meta">
-        <dt>Role</dt>
-        <dd>${data.meta.role}</dd>
-
-        <dt>Disciplines</dt>
-        <dd>${data.meta.disciplines}</dd>
+        <dt>Description</dt>
+        <dd>${data.meta.notes}</dd>
       </dl>
 
     </div>

@@ -275,6 +275,10 @@ article.project-card {
   min-width: 0;
 }
 
+.project-card-body dl {
+  margin-top: 0;
+}
+
 article.project-card p {
   margin: 0;
 }
