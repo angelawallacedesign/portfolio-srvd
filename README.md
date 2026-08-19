@@ -6,7 +6,7 @@ Every project begins the same way: understanding the problem, sketching ideas, r
 
 ## Design Philosophy
 
-For most of my career, I worked as a Visual Designer responsible for the final design work before engineering handoff. Working closely with front-end developers taught me that successful products are built through shared understanding—not simply handing over mockups.
+For the latter part of my career, I worked as a Visual Designer responsible for the final design work before engineering handoff. Working closely with front-end developers taught me that successful products are built through shared understanding—not simply handing over mockups.
 
 My background in HTML and CSS gave me an advantage when designing interfaces because implementation constraints influenced design decisions from the beginning.
 
