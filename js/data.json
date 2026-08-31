@@ -57,7 +57,7 @@
     "users": 6000000,
     "complexity": 4,
     "opacity": 0.8,
-    "hasCaseStudy": false,
+    "hasCaseStudy": true,
     "htmlInclude": "./includes/case-studies/data-sharing.html",
     "meta": {
       "type": "Regulated Platform Design",
