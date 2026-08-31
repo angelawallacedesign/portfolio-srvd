@@ -2,6 +2,18 @@
 
 These components and modules are packaged for independent use within the portfolio. Each package includes its own markup, styles, and JavaScript unless otherwise noted.
 
+## Designing with AI Hero
+
+Path: `designing-with-ai-hero/`
+
+- Open `pass-1/index.html` for the approved structural and container-motion artifact.
+- Open `pass-2/index.html` for the presentation and primary-choreography artifact.
+- Open `pass-2-correction/index.html` for the corrected editorial scale and responsive final state.
+- Open `pass-3/index.html` for the completed motion-polish and designer-directed AI workflow artifact.
+- Open `pass-4/index.html` for the white-page-ready treatment with the dark stage removed and its faded dimensional treatment incorporated into the panel.
+- Open `pass-5/index.html` for the Pass 3 branch with the technical blueprint incorporated into the animated panel shell.
+- Each pass contains its own `component.html`, `designing-ai-hero.css`, demo stylesheet, and reuse notes.
+
 ## Pattern Inspector
 
 Path: `inspector-refactor/pattern-inspector-integration/`
