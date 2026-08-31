@@ -1,0 +1,395 @@
+/* Designing with AI hero — corrected Pass 2 scale and responsive final state. */
+
+.designing-ai-hero {
+  --dai-stage-min-height: 23rem;
+  --dai-stage-height: clamp(23rem, 40svh, 27rem);
+  --dai-panel-inline-start: clamp(10rem, 23.75vw, 24rem);
+  --dai-panel-inline-end: clamp(2rem, 6vw, 6rem);
+  --dai-panel-block-start: clamp(1.25rem, 3svh, 2rem);
+  --dai-panel-block-end: clamp(2.5rem, 5svh, 3.5rem);
+  --dai-extrusion-inline: clamp(10rem, 23vw, 24rem);
+  --dai-extrusion-block: clamp(2.75rem, 6vw, 5.5rem);
+  --dai-enter-duration: 900ms;
+  --dai-enter-delay: 120ms;
+  --dai-enter-ease: cubic-bezier(0.22, 0.75, 0.18, 1);
+  --dai-content-ease: cubic-bezier(0.2, 0.72, 0.2, 1);
+  --dai-content-eyebrow-delay: 900ms;
+  --dai-content-title-delay: 1040ms;
+  --dai-content-copy-delay: 1190ms;
+  --dai-content-cta-delay: 1320ms;
+  --dai-content-duration: 420ms;
+
+  --dai-field-surface: var(--color-case-study-frame, #202023);
+  --dai-field-depth: color-mix(in srgb, var(--dai-field-surface) 88%, var(--color-accent, #a0a0a8));
+  --dai-field-ink: rgb(255 255 255 / 20%);
+  --dai-field-grid: rgb(255 255 255 / 6%);
+  --dai-panel-surface: var(--color-surface, #ffffff);
+  --dai-extrusion-surface: color-mix(in srgb, var(--theme-frame, #000000) 88%, var(--dai-field-surface));
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: var(--dai-stage-min-height);
+  height: var(--dai-stage-height);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 7% 36%, color-mix(in srgb, var(--color-accent, #a0a0a8) 14%, transparent), transparent 28rem),
+    linear-gradient(112deg, var(--dai-field-depth), var(--dai-field-surface) 42% 100%);
+}
+
+.designing-ai-hero,
+.designing-ai-hero * {
+  box-sizing: border-box;
+}
+
+.designing-ai-hero__technical-field,
+.designing-ai-hero__blueprint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.designing-ai-hero__blueprint {
+  max-width: none;
+}
+
+.designing-ai-hero__grid,
+.designing-ai-hero__diagram {
+  fill: none;
+  stroke: var(--dai-field-ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.designing-ai-hero__grid {
+  stroke: var(--dai-field-grid);
+  stroke-dasharray: 2 5;
+}
+
+.designing-ai-hero__diagram--left,
+.designing-ai-hero__diagram--right {
+  opacity: 0.62;
+}
+
+.designing-ai-hero__diagram--corners {
+  opacity: 0.34;
+}
+
+.designing-ai-hero__dashed {
+  stroke-dasharray: 5 5;
+}
+
+.designing-ai-hero__diagram circle,
+.designing-ai-hero__diagram rect {
+  fill: var(--dai-field-ink);
+  stroke: none;
+}
+
+.designing-ai-hero__diagram text {
+  fill: var(--dai-field-ink);
+  stroke: none;
+  font: 15px/1 var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.designing-ai-hero__panel-shell {
+  position: absolute;
+  z-index: 1;
+  inset:
+    var(--dai-panel-block-start)
+    var(--dai-panel-inline-end)
+    var(--dai-panel-block-end)
+    var(--dai-panel-inline-start);
+  will-change: transform;
+  animation: designing-ai-panel-enter var(--dai-enter-duration) var(--dai-enter-ease) var(--dai-enter-delay) both;
+}
+
+.designing-ai-hero__panel-shell::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: calc(-1 * var(--dai-extrusion-block));
+  left: calc(-1 * var(--dai-extrusion-inline));
+  background: var(--dai-extrusion-surface);
+  clip-path: polygon(
+    var(--dai-extrusion-inline) 0,
+    100% 0,
+    100% calc(100% - var(--dai-extrusion-block)),
+    calc(100% - var(--dai-extrusion-block)) 100%,
+    0 100%
+  );
+}
+
+.designing-ai-hero__panel {
+  position: absolute;
+  inset: 0;
+  background: var(--dai-panel-surface);
+  overflow: hidden;
+}
+
+.designing-ai-hero__content {
+  position: relative;
+  display: grid;
+  grid-template-columns: max-content minmax(12rem, 1fr);
+  grid-template-rows: auto auto auto minmax(3.5rem, 1fr);
+  align-items: start;
+  height: 100%;
+  padding: clamp(1.25rem, 2.8vw, 2rem) clamp(2rem, 4vw, 4rem);
+  color: var(--theme-text, var(--color-text, #111111));
+}
+
+.designing-ai-hero__eyebrow,
+.designing-ai-hero__copy {
+  margin: 0;
+  font-family: var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.designing-ai-hero__eyebrow {
+  grid-column: 1 / -1;
+  justify-self: end;
+  color: var(--color-accent);
+  font-size: clamp(0.7rem, 0.9vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  animation: designing-ai-eyebrow-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-eyebrow-delay) both;
+}
+
+.designing-ai-hero__title.section-heading {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: clamp(0.65rem, 1.5svh, 0.9rem) 0 0;
+  line-height: 0.88;
+  animation: designing-ai-title-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-title-delay) both;
+}
+
+.designing-ai-hero__title.heading--display .heading-main {
+  font-size: clamp(2.5rem, 3.8vw, 4rem);
+}
+
+.designing-ai-hero__title.heading--display .heading-accent {
+  margin: 0 0 0 0.12em;
+  font-size: clamp(2.25rem, 3.35vw, 3.55rem);
+  white-space: nowrap;
+}
+
+.designing-ai-hero__copy {
+  grid-column: 1 / -1;
+  max-width: 68rem;
+  margin-top: clamp(0.75rem, 1.8svh, 1rem);
+  color: var(--theme-text, var(--color-text, #111111));
+  font-size: clamp(0.84rem, 1.08vw, 1rem);
+  font-weight: 300;
+  line-height: 1.45;
+  animation: designing-ai-copy-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-copy-delay) both;
+}
+
+.designing-ai-hero__cta.primary-btn {
+  grid-column: 1;
+  grid-row: 4;
+  align-self: start;
+  justify-self: start;
+  display: inline-block;
+  margin-top: clamp(0.8rem, 2svh, 1rem);
+  padding: clamp(0.8rem, 1.4vw, 0.95rem) clamp(1.5rem, 2.4vw, 2.25rem);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  animation: designing-ai-cta-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-cta-delay) both;
+}
+
+.designing-ai-hero__future-visual {
+  grid-column: 2;
+  grid-row: 4;
+  align-self: stretch;
+  min-width: min(24rem, 100%);
+  min-height: 3.5rem;
+}
+
+@keyframes designing-ai-panel-enter {
+  from {
+    transform: translate3d(0, calc(100svh + var(--dai-extrusion-block)), 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-eyebrow-enter {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 0.4rem, 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-title-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(-0.875rem, 0.875rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-copy-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.5rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-cta-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.375rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 48rem) {
+  .designing-ai-hero {
+    --dai-stage-min-height: 32rem;
+    --dai-stage-height: clamp(32rem, 68svh, 36rem);
+    --dai-panel-inline-start: clamp(4rem, 13vw, 6rem);
+    --dai-panel-inline-end: clamp(1.5rem, 4vw, 2.5rem);
+    --dai-panel-block-start: 2rem;
+    --dai-panel-block-end: clamp(3.5rem, 8svh, 4.5rem);
+    --dai-extrusion-inline: clamp(4rem, 13vw, 6rem);
+    --dai-extrusion-block: clamp(3.5rem, 12vw, 6rem);
+  }
+
+  .designing-ai-hero__blueprint {
+    width: 100%;
+    left: 0;
+  }
+
+  .designing-ai-hero__content {
+    grid-template-columns: max-content minmax(9rem, 1fr);
+    grid-template-rows: auto auto auto minmax(6rem, 1fr);
+    padding: 2rem clamp(2rem, 5vw, 3rem);
+  }
+
+  .designing-ai-hero__title.heading--display .heading-main {
+    font-size: clamp(2.7rem, 7.2vw, 3.5rem);
+  }
+
+  .designing-ai-hero__title.heading--display .heading-accent {
+    font-size: clamp(2.4rem, 6.4vw, 3.1rem);
+  }
+
+  .designing-ai-hero__copy {
+    font-size: clamp(0.85rem, 1.9vw, 0.95rem);
+  }
+
+  .designing-ai-hero__diagram--left,
+  .designing-ai-hero__diagram--right {
+    opacity: 0.44;
+  }
+
+  .designing-ai-hero__diagram--corners {
+    display: none;
+  }
+}
+
+@media (max-width: 30rem) {
+  .designing-ai-hero {
+    --dai-stage-min-height: 42rem;
+    --dai-stage-height: clamp(42rem, 82svh, 46rem);
+    --dai-panel-inline-start: 2.25rem;
+    --dai-panel-inline-end: 1rem;
+    --dai-panel-block-start: 3rem;
+    --dai-panel-block-end: 4rem;
+    --dai-extrusion-inline: 2.25rem;
+    --dai-extrusion-block: 2.75rem;
+    --dai-field-grid: rgb(255 255 255 / 4%);
+  }
+
+  .designing-ai-hero__diagram--left,
+  .designing-ai-hero__diagram--right {
+    opacity: 0.28;
+  }
+
+  .designing-ai-hero__content {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto minmax(6rem, 1fr);
+    padding: 1.5rem;
+  }
+
+  .designing-ai-hero__eyebrow {
+    font-size: 0.7rem;
+  }
+
+  .designing-ai-hero__title.section-heading {
+    grid-column: 1;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .designing-ai-hero__title.heading--display .heading-main {
+    font-size: clamp(2.4rem, 11.5vw, 3rem);
+  }
+
+  .designing-ai-hero__title.heading--display .heading-accent {
+    margin: -0.08em 0 0;
+    font-size: clamp(2.2rem, 10.6vw, 2.8rem);
+  }
+
+  .designing-ai-hero__copy {
+    grid-column: 1;
+    margin-top: 1rem;
+    font-size: clamp(0.8rem, 3.4vw, 0.9rem);
+    line-height: 1.42;
+  }
+
+  .designing-ai-hero__cta.primary-btn {
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .designing-ai-hero__future-visual {
+    grid-column: 1;
+    grid-row: 5;
+    min-width: 0;
+    min-height: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .designing-ai-hero__panel-shell {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .designing-ai-hero__eyebrow,
+  .designing-ai-hero__title.section-heading,
+  .designing-ai-hero__copy,
+  .designing-ai-hero__cta.primary-btn {
+    animation: none;
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,176 @@
+/* Designing with AI hero — module-owned layout and Pass 1 motion. */
+
+.designing-ai-hero {
+  --dai-stage-min-height: 34rem;
+  --dai-stage-height: min(48rem, 100svh);
+  --dai-panel-inline-start: clamp(10rem, 23.75vw, 30rem);
+  --dai-panel-inline-end: clamp(2rem, 6vw, 7.5rem);
+  --dai-panel-block-start: clamp(2rem, 7.5svh, 4.5rem);
+  --dai-panel-block-end: clamp(4.5rem, 17svh, 8rem);
+  --dai-extrusion-inline: clamp(7rem, 23vw, 30rem);
+  --dai-extrusion-block: clamp(5rem, 18vw, 16rem);
+  --dai-enter-duration: 900ms;
+  --dai-enter-delay: 120ms;
+  --dai-enter-ease: cubic-bezier(0.22, 0.75, 0.18, 1);
+
+  --dai-field-surface: var(--color-case-study-frame, #202023);
+  --dai-field-depth: color-mix(in srgb, var(--dai-field-surface) 88%, var(--color-accent, #a0a0a8));
+  --dai-field-ink: rgb(255 255 255 / 20%);
+  --dai-field-grid: rgb(255 255 255 / 6%);
+  --dai-panel-surface: var(--color-surface, #ffffff);
+  --dai-extrusion-surface: color-mix(in srgb, var(--theme-frame, #000000) 88%, var(--dai-field-surface));
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: var(--dai-stage-min-height);
+  height: var(--dai-stage-height);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 7% 36%, color-mix(in srgb, var(--color-accent, #a0a0a8) 14%, transparent), transparent 28rem),
+    linear-gradient(112deg, var(--dai-field-depth), var(--dai-field-surface) 42% 100%);
+}
+
+.designing-ai-hero,
+.designing-ai-hero * {
+  box-sizing: border-box;
+}
+
+.designing-ai-hero__technical-field,
+.designing-ai-hero__blueprint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.designing-ai-hero__blueprint {
+  max-width: none;
+}
+
+.designing-ai-hero__grid,
+.designing-ai-hero__diagram {
+  fill: none;
+  stroke: var(--dai-field-ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.designing-ai-hero__grid {
+  stroke: var(--dai-field-grid);
+  stroke-dasharray: 2 5;
+}
+
+.designing-ai-hero__diagram--left,
+.designing-ai-hero__diagram--right {
+  opacity: 0.62;
+}
+
+.designing-ai-hero__diagram--corners {
+  opacity: 0.34;
+}
+
+.designing-ai-hero__dashed {
+  stroke-dasharray: 5 5;
+}
+
+.designing-ai-hero__diagram circle,
+.designing-ai-hero__diagram rect {
+  fill: var(--dai-field-ink);
+  stroke: none;
+}
+
+.designing-ai-hero__diagram text {
+  fill: var(--dai-field-ink);
+  stroke: none;
+  font: 15px/1 var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.designing-ai-hero__panel-shell {
+  position: absolute;
+  z-index: 1;
+  inset:
+    var(--dai-panel-block-start)
+    var(--dai-panel-inline-end)
+    var(--dai-panel-block-end)
+    var(--dai-panel-inline-start);
+  will-change: transform;
+  animation: designing-ai-panel-enter var(--dai-enter-duration) var(--dai-enter-ease) var(--dai-enter-delay) both;
+}
+
+.designing-ai-hero__panel-shell::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: calc(-1 * var(--dai-extrusion-block));
+  left: calc(-1 * var(--dai-extrusion-inline));
+  background: var(--dai-extrusion-surface);
+  clip-path: polygon(
+    var(--dai-extrusion-inline) 0,
+    100% 0,
+    100% calc(100% - var(--dai-extrusion-block)),
+    calc(100% - var(--dai-extrusion-block)) 100%,
+    0 100%
+  );
+}
+
+.designing-ai-hero__panel {
+  position: absolute;
+  inset: 0;
+  background: var(--dai-panel-surface);
+}
+
+@keyframes designing-ai-panel-enter {
+  from {
+    transform: translate3d(0, calc(100svh + var(--dai-extrusion-block)), 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 52rem) {
+  .designing-ai-hero {
+    --dai-stage-min-height: 31rem;
+    --dai-stage-height: min(43rem, 92svh);
+    --dai-panel-inline-start: clamp(3.75rem, 13vw, 6.5rem);
+    --dai-panel-inline-end: clamp(1.25rem, 5vw, 3rem);
+    --dai-panel-block-start: clamp(2.75rem, 10svh, 4rem);
+    --dai-panel-block-end: clamp(4.5rem, 17svh, 7rem);
+    --dai-extrusion-inline: clamp(3rem, 13vw, 6.5rem);
+    --dai-extrusion-block: clamp(3rem, 13vw, 6.5rem);
+  }
+
+  .designing-ai-hero__blueprint {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media (max-width: 34rem) {
+  .designing-ai-hero {
+    --dai-stage-min-height: 30rem;
+    --dai-stage-height: 78svh;
+    --dai-panel-inline-start: 2.25rem;
+    --dai-panel-inline-end: 1rem;
+    --dai-panel-block-start: 4rem;
+    --dai-panel-block-end: 4.75rem;
+    --dai-extrusion-inline: 2.25rem;
+    --dai-extrusion-block: 2.25rem;
+  }
+
+  .designing-ai-hero__diagram--left,
+  .designing-ai-hero__diagram--right {
+    opacity: 0.42;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .designing-ai-hero__panel-shell {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
